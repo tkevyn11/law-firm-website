@@ -60,14 +60,6 @@ export function PageHeroText({
           {subtitle}
         </motion.p>
       ) : null}
-      <motion.div
-        variants={item}
-        className={cn(
-          "my-4 h-3 w-3 rotate-45 border border-gold bg-gold/20",
-          align === "center" ? "mx-auto" : "mx-0"
-        )}
-        aria-hidden
-      />
     </motion.div>
   );
 }
