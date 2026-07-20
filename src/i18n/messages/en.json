@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "siteName": "TAN, KONG & ASSOCIATES",
+    "tagline": "Clear advice. Strong representation. Peace of mind.",
+    "description": "Boutique advocates & solicitors in Publika, Mont Kiara, Kuala Lumpur. Criminal defence, civil litigation, corporate, family and property law. English & Chinese speaking."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "practice": "Practice Areas",
+    "contact": "Contact",
+    "enquire": "Enquire Now",
+    "whatsapp": "WhatsApp"
+  },
+  "home": {
+    "heroEyebrow": "Advocates & Solicitors · Kuala Lumpur",
+    "heroTitle": "Legal counsel you can trust",
+    "heroSubtitle": "TAN, KONG & ASSOCIATES brings together two seasoned partners — criminal defence excellence and practical civil & corporate advocacy — under one roof at Publika, Mont Kiara.",
+    "ctaEnquire": "Submit an enquiry",
+    "ctaWhatsapp": "Chat on WhatsApp",
+    "introTitle": "Your legal ally every step of the way",
+    "introBody": "We stand by individuals, families and businesses with clear advice, strategic advocacy and unwavering protection. From urgent police detention to complex commercial disputes, we deliver practical solutions with integrity.",
+    "practiceTitle": "Practice areas",
+    "practiceSubtitle": "Focused expertise across criminal, civil and commercial matters",
+    "viewAllPractice": "View all practice areas",
+    "whyTitle": "Why choose our firm",
+    "why": {
+      "strategy": {
+        "title": "Personalised legal strategy",
+        "body": "Every matter is handled with a tailored approach matched to your goals — never one-size-fits-all."
+      },
+      "communication": {
+        "title": "Clear communication",
+        "body": "We keep things simple and transparent. You will always know where your matter stands."
+      },
+      "results": {
+        "title": "Results-driven",
+        "body": "We focus on solutions that work — resolving matters effectively and on time."
+      },
+      "multilingual": {
+        "title": "Multilingual counsel",
+        "body": "English, Chinese and Bahasa Malaysia — serving local and foreign clients with care."
+      }
+    },
+    "partnersTitle": "Our partners",
+    "partnersSubtitle": "Two complementary practices. One firm committed to you.",
+    "stats": {
+      "cases": "Criminal cases defended",
+      "years": "Combined years of experience",
+      "languages": "Languages spoken",
+      "location": "At the heart of Mont Kiara"
+    },
+    "ctaTitle": "Need legal advice?",
+    "ctaBody": "Reach us by form, WhatsApp or phone. We respond promptly to urgent matters.",
+    "ctaButton": "Contact the firm"
+  },
+  "about": {
+    "title": "About the firm",
+    "subtitle": "A partnership built on complementary strengths",
+    "storyTitle": "Our story",
+    "story": "TAN, KONG & ASSOCIATES unites the criminal defence practice of Kenny Tan (formerly Tan Cheng Yee & Co) with the civil, corporate and dispute-resolution practice of Melvin Kong (formerly JY Kong Law Firm). Together we offer a full-service boutique firm from our office at Publika Solaris Dutamas, Mont Kiara.",
+    "valuesTitle": "Our values",
+    "values": {
+      "integrity": {
+        "title": "Integrity",
+        "body": "Honest advice even when it is difficult to hear."
+      },
+      "dedication": {
+        "title": "Dedication",
+        "body": "We stand by our clients every step of the way."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "body": "Creative strategies and meticulous preparation."
+      }
+    },
+    "partnersTitle": "Meet the partners",
+    "kenny": {
+      "bio": "Kenny Tan is a criminal defence lawyer with over a decade of experience. Since establishing his practice in 2020 he has defended more than 1,000 criminal cases, helping local and foreign clients secure release from detention or acquittal. He is known for practical, aggressive and strategic defence tactics — securing bail, negotiating police releases, and protecting fundamental rights in court.",
+      "focus": "Criminal law, bail applications, police detention, foreign clients, civil litigation and family matters."
+    },
+    "melvin": {
+      "bio": "Melvin Kong (Kong Jiun Yuan) holds an LL.B. (Hons.) from Multimedia University (2013). He has practised banking litigation, debt recovery, personal injury and motor accident claims, and corporate commercial work — including share purchase and joint venture agreements. He has also advised a Vietnamese company as legal counsel in Ho Chi Minh City, collaborating with counsel across ASEAN and the United States.",
+      "focus": "Debt recovery, shareholder & contractual disputes, corporate agreements, personal injury, family law and property transactions."
+    },
+    "credentials": "Credentials & focus",
+    "languages": "Languages"
+  },
+  "practice": {
+    "title": "Practice areas",
+    "subtitle": "Practical legal solutions for individuals, families and businesses",
+    "areas": {
+      "criminal": {
+        "title": "Criminal defence",
+        "body": "Strategic defence for criminal charges, bail applications, police detention releases and court representation — including matters involving foreign nationals."
+      },
+      "civil": {
+        "title": "Civil litigation",
+        "body": "Dispute resolution and courtroom advocacy for commercial and private civil claims, with a focus on practical outcomes."
+      },
+      "debt": {
+        "title": "Debt recovery & fraud",
+        "body": "Swift action to protect cash flow and reputation — garnishee proceedings, execution, bankruptcy and winding-up advice."
+      },
+      "corporate": {
+        "title": "Corporate & commercial",
+        "body": "Shareholder disputes, contractual breaches, share purchase and joint venture agreements, and board-level counsel."
+      },
+      "personal-injury": {
+        "title": "Personal injury & motor claims",
+        "body": "Accident briefs, quantum assessment, insurance negotiations and trials for injury and motor vehicle claims."
+      },
+      "family": {
+        "title": "Family law & mediation",
+        "body": "Divorce, custody, maintenance and mediation — supportive representation for sensitive family matters."
+      },
+      "property": {
+        "title": "Property & conveyancing",
+        "body": "Due diligence, agreements and secure transactions for residential and commercial property purchases."
+      },
+      "employment": {
+        "title": "Employment & industrial",
+        "body": "Unfair dismissal claims at the Industrial Court, employment advice and workplace dispute resolution."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "Submit an enquiry or reach us directly on WhatsApp",
+    "formTitle": "Enquiry form",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "How can we help?",
+    "partner": "Preferred partner (optional)",
+    "partnerAny": "No preference",
+    "submit": "Send enquiry",
+    "sending": "Sending…",
+    "success": "Thank you. Your enquiry has been sent. We will respond shortly.",
+    "error": "Something went wrong. Please try WhatsApp or call us directly.",
+    "officeTitle": "Office",
+    "hours": "By appointment · Urgent matters available",
+    "whatsappTitle": "WhatsApp a partner",
+    "mapTitle": "Find us at Publika",
+    "disclaimer": "Sending an enquiry does not create a solicitor-client relationship. Please do not include highly confidential details in the form."
+  },
+  "footer": {
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "disclaimer": "This website provides general information only and does not constitute legal advice."
+  }
+}

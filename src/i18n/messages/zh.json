@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "siteName": "陈和江律师事务所",
+    "tagline": "清晰建议 · 有力代理 · 安心托付",
+    "description": "吉隆坡满家乐 Publika 精品律师事务所。刑事辩护、民事诉讼、公司与商业、家庭与产业法律服务。提供中文与英文服务。"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "practice": "业务领域",
+    "contact": "联系我们",
+    "enquire": "在线咨询",
+    "whatsapp": "WhatsApp"
+  },
+  "home": {
+    "heroEyebrow": "律师与事务律师 · 吉隆坡",
+    "heroTitle": "值得信赖的法律顾问",
+    "heroSubtitle": "陈和江律师事务所汇聚两位资深合伙人——刑事辩护专长与民商事诉讼实务——于满家乐 Publika 同一屋檐下为您服务。",
+    "ctaEnquire": "提交咨询",
+    "ctaWhatsapp": "WhatsApp 联系",
+    "introTitle": "每一步，我们与您同行",
+    "introBody": "我们为个人、家庭与企业提供清晰建议、策略性代理与坚定保障。无论是紧急的警方扣留，还是复杂的商业纠纷，我们都以诚信交付务实方案。",
+    "practiceTitle": "业务领域",
+    "practiceSubtitle": "覆盖刑事、民事与商业法律事务的专业服务",
+    "viewAllPractice": "查看全部业务领域",
+    "whyTitle": "为何选择我们",
+    "why": {
+      "strategy": {
+        "title": "个性化法律策略",
+        "body": "每宗案件量身定制，绝不千篇一律。"
+      },
+      "communication": {
+        "title": "清晰沟通",
+        "body": "我们用简单透明的方式说明案情，让您随时掌握进展。"
+      },
+      "results": {
+        "title": "以结果为导向",
+        "body": "专注有效方案，高效及时地解决法律问题。"
+      },
+      "multilingual": {
+        "title": "多语言服务",
+        "body": "英语、中文与马来语——服务本地与外国客户。"
+      }
+    },
+    "partnersTitle": "我们的合伙人",
+    "partnersSubtitle": "互补专长，共同为您尽责。",
+    "stats": {
+      "cases": "刑事案件代理",
+      "years": "合计执业经验",
+      "languages": "服务语言",
+      "location": "坐落满家乐核心"
+    },
+    "ctaTitle": "需要法律意见？",
+    "ctaBody": "可通过表格、WhatsApp 或电话联系我们。紧急事项我们将尽快回应。",
+    "ctaButton": "联系事务所"
+  },
+  "about": {
+    "title": "关于事务所",
+    "subtitle": "优势互补的专业合伙",
+    "storyTitle": "我们的故事",
+    "story": "陈和江律师事务所由陈先生的刑事辩护业务（原 Tan Cheng Yee & Co）与江俊源律师的民商事及争议解决业务（原 JY Kong Law Firm）合并而成。我们在满家乐 Publika Solaris Dutamas 为客户提供精品全方位法律服务。",
+    "valuesTitle": "我们的价值观",
+    "values": {
+      "integrity": {
+        "title": "诚信",
+        "body": "即使难以开口，也如实告知。"
+      },
+      "dedication": {
+        "title": "尽心",
+        "body": "每一步，我们与客户同行。"
+      },
+      "excellence": {
+        "title": "卓越",
+        "body": "创意策略与严谨准备。"
+      }
+    },
+    "partnersTitle": "认识合伙人",
+    "kenny": {
+      "bio": "陈律师从事刑事辩护逾十年。自2020年开业以来，已代理逾千宗刑事案件，协助本地与外国客户获得保释、解除扣留或无罪开释。他以务实、积极与策略性的辩护著称——申请保释、与警方协商释放，并在法庭上捍卫基本权利。",
+      "focus": "刑法、保释申请、警方扣留、外国客户、民事诉讼及家庭事务。"
+    },
+    "melvin": {
+      "bio": "江俊源律师持有马来西亚多媒体大学法学荣誉学士学位（2013）。他曾处理银行诉讼、债务追讨、人身伤害与车祸索赔，以及公司商业事务——包括股权转让与合资协议。他亦曾于胡志明市担任越南公司法律顾问，与东盟及美国律师协作。",
+      "focus": "债务追讨、股东与合同纠纷、公司协议、人身伤害、家庭法与产业交易。"
+    },
+    "credentials": "资历与专长",
+    "languages": "语言"
+  },
+  "practice": {
+    "title": "业务领域",
+    "subtitle": "为个人、家庭与企业提供务实法律方案",
+    "areas": {
+      "criminal": {
+        "title": "刑事辩护",
+        "body": "刑事案件策略辩护、保释申请、警方扣留释放及出庭代理——包括外国客户案件。"
+      },
+      "civil": {
+        "title": "民事诉讼",
+        "body": "商业与私人民事争议解决及出庭代理，注重务实结果。"
+      },
+      "debt": {
+        "title": "债务追讨与欺诈",
+        "body": "迅速行动以保障现金流与商誉——扣押令、强制执行、破产与清盘意见。"
+      },
+      "corporate": {
+        "title": "公司与商业",
+        "body": "股东纠纷、合同违约、股权转让与合资协议，以及董事会层面法律意见。"
+      },
+      "personal-injury": {
+        "title": "人身伤害与车祸索赔",
+        "body": "事故案件、赔偿评估、保险协商及人身伤害与机动车索赔诉讼。"
+      },
+      "family": {
+        "title": "家庭法与调解",
+        "body": "离婚、抚养权、赡养费与调解——敏感家庭事务的支持性代理。"
+      },
+      "property": {
+        "title": "产业与产权转让",
+        "body": "住宅与商业产业购买的尽职调查、协议与安全交易。"
+      },
+      "employment": {
+        "title": "雇佣与工业法庭",
+        "body": "工业法庭不公平解雇索赔、雇佣意见与职场争议解决。"
+      }
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "提交咨询或直接通过 WhatsApp 联系",
+    "formTitle": "咨询表格",
+    "name": "姓名",
+    "email": "电邮",
+    "phone": "电话",
+    "subject": "主题",
+    "message": "我们如何帮助您？",
+    "partner": "指定合伙人（可选）",
+    "partnerAny": "无偏好",
+    "submit": "发送咨询",
+    "sending": "发送中…",
+    "success": "谢谢。您的咨询已发送，我们将尽快回复。",
+    "error": "发送失败。请改用 WhatsApp 或直接致电我们。",
+    "officeTitle": "办公室",
+    "hours": "预约服务 · 紧急事项可随时联系",
+    "whatsappTitle": "WhatsApp 联系合伙人",
+    "mapTitle": "地址：Publika",
+    "disclaimer": "提交咨询并不构成律师与客户关系。请勿在表格中填写高度机密信息。"
+  },
+  "footer": {
+    "quickLinks": "快速链接",
+    "contact": "联系方式",
+    "rights": "版权所有。",
+    "disclaimer": "本网站仅提供一般信息，不构成法律意见。"
+  }
+}
