@@ -4,6 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { partners, telHref, whatsappUrl } from "@/lib/firm";
 
@@ -40,13 +41,13 @@ export default async function AboutPage({
 
   return (
     <>
-      <section className="border-b border-navy/10 bg-white section-pad !pb-12 !pt-16">
-        <div className="container-narrow text-center">
-          <h1 className="text-4xl font-semibold sm:text-5xl">{t("title")}</h1>
-          <p className="mt-3 text-lg text-navy/70">{t("subtitle")}</p>
-          <div className="gold-diamond" />
-        </div>
-      </section>
+      <PageHero
+        title={t("title")}
+        subtitle={t("subtitle")}
+        imageSrc="/hero/about-hero.png"
+        imageAlt={t("heroAlt")}
+        layout="copySpaceLeft"
+      />
 
       <section className="section-pad">
         <div className="container-narrow grid gap-10 lg:grid-cols-2 lg:items-center">
@@ -60,10 +61,10 @@ export default async function AboutPage({
           <Reveal delay={0.1}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-navy/5">
               <Image
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
-                alt="Law books and scales of justice"
+                src="/about/lady-justice.jpg"
+                alt={t("storyImageAlt")}
                 fill
-                className="object-cover"
+                className="object-cover object-right"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

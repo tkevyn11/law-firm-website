@@ -2,6 +2,7 @@ import { MessageCircle } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AppointmentForm } from "@/components/contact/appointment-form";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { partners, whatsappUrl } from "@/lib/firm";
 
@@ -36,13 +37,12 @@ export default async function BookAppointmentPage({
 
   return (
     <>
-      <section className="border-b border-navy/10 bg-white section-pad !pb-12 !pt-16">
-        <div className="container-narrow text-center">
-          <h1 className="text-4xl font-semibold sm:text-5xl">{t("title")}</h1>
-          <p className="mt-3 text-lg text-navy/70">{t("subtitle")}</p>
-          <div className="gold-diamond" />
-        </div>
-      </section>
+      <PageHero
+        title={t("title")}
+        subtitle={t("subtitle")}
+        imageSrc="/hero/appointment.jpg"
+        imageAlt={t("heroAlt")}
+      />
 
       <section className="section-pad">
         <div className="container-narrow grid gap-12 lg:grid-cols-5">

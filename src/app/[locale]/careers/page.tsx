@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { firm } from "@/lib/firm";
 
@@ -37,13 +38,12 @@ export default async function CareersPage({
 
   return (
     <>
-      <section className="border-b border-navy/10 bg-white section-pad !pb-12 !pt-16">
-        <div className="container-narrow text-center">
-          <h1 className="text-4xl font-semibold sm:text-5xl">{t("title")}</h1>
-          <p className="mt-3 text-lg text-navy/70">{t("subtitle")}</p>
-          <div className="gold-diamond" />
-        </div>
-      </section>
+      <PageHero
+        title={t("title")}
+        subtitle={t("subtitle")}
+        imageSrc="/hero/careers.jpg"
+        imageAlt={t("heroAlt")}
+      />
 
       <section className="section-pad">
         <div className="container-narrow max-w-3xl">
@@ -121,8 +121,8 @@ export default async function CareersPage({
         </div>
       </section>
 
-      <section className="section-pad bg-navy text-center text-ivory">
-        <div className="container-narrow">
+      <section className="section-pad bg-navy text-center text-ivory navy-cta">
+        <div className="container-narrow relative">
           <Reveal>
             <h2 className="font-serif text-3xl font-semibold text-white">
               {t("applyTitle")}

@@ -12,6 +12,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { HoverLift } from "@/components/motion/hover-lift";
 import { practiceAreaIds, type PracticeAreaId } from "@/lib/firm";
@@ -59,13 +60,12 @@ export default async function PracticeAreasPage({
 
   return (
     <>
-      <section className="border-b border-navy/10 bg-white section-pad !pb-12 !pt-16">
-        <div className="container-narrow text-center">
-          <h1 className="text-4xl font-semibold sm:text-5xl">{t("title")}</h1>
-          <p className="mt-3 text-lg text-navy/70">{t("subtitle")}</p>
-          <div className="gold-diamond" />
-        </div>
-      </section>
+      <PageHero
+        title={t("title")}
+        subtitle={t("subtitle")}
+        imageSrc="/hero/practice.jpg"
+        imageAlt={t("heroAlt")}
+      />
 
       <div className="sticky top-[5.5rem] z-30 border-b border-navy/10 bg-ivory/95 backdrop-blur-md sm:top-[6.25rem] lg:top-[9.5rem]">
         <div className="container-narrow overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">

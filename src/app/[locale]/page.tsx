@@ -1,10 +1,13 @@
 import Image from "next/image";
+import { existsSync } from "fs";
+import path from "path";
 import { Scale, Shield, MessageSquare, Globe2 } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HeroEntrance } from "@/components/motion/hero-entrance";
+import { HeroImage } from "@/components/motion/hero-image";
 import { Reveal } from "@/components/motion/reveal";
 import { HoverLift } from "@/components/motion/hover-lift";
 import { CountUp } from "@/components/motion/count-up";
@@ -14,6 +17,7 @@ const whyIcons = [Shield, MessageSquare, Scale, Globe2] as const;
 const whyKeys = ["strategy", "communication", "results", "multilingual"] as const;
 const homePractice = practiceAreaIds.slice(0, 6);
 const testimonialKeys = ["t1", "t2", "t3"] as const;
+const HOME_HERO = "/hero/home.png";
 
 export default async function HomePage({
   params,
@@ -28,26 +32,41 @@ export default async function HomePage({
     partners[0].whatsapp,
     "Hello, I would like to enquire about legal advice."
   );
+  const hasHomeHero = existsSync(
+    path.join(process.cwd(), "public", "hero", "home.png")
+  );
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-navy/10 bg-navy text-ivory">
+      <section className="relative min-h-[70vh] overflow-hidden border-b border-navy/10 bg-navy text-ivory sm:min-h-[75vh]">
+        {hasHomeHero ? (
+          <HeroImage
+            src={HOME_HERO}
+            alt={t("heroAlt")}
+            priority
+            imageOpacity={1}
+          />
+        ) : null}
+        {/* Left-weighted overlay — text sits in the image's dark copy space */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, #b8925a 0%, transparent 45%), radial-gradient(circle at 80% 60%, #c9a227 0%, transparent 40%)",
-          }}
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/55 to-navy/25"
+          aria-hidden
         />
-        <HeroEntrance
-          eyebrow={t("heroEyebrow")}
-          title={t("heroTitle")}
-          subtitle={t("heroSubtitle")}
-          nameZh={firm.nameZh}
-          ctaEnquire={t("ctaEnquire")}
-          ctaWhatsapp={t("ctaWhatsapp")}
-          whatsappHref={wa}
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-navy/30"
+          aria-hidden
         />
+        <div className="relative flex min-h-[70vh] items-center sm:min-h-[75vh]">
+          <HeroEntrance
+            eyebrow={t("heroEyebrow")}
+            title={t("heroTitle")}
+            subtitle={t("heroSubtitle")}
+            nameZh={firm.nameZh}
+            ctaEnquire={t("ctaEnquire")}
+            ctaWhatsapp={t("ctaWhatsapp")}
+            whatsappHref={wa}
+          />
+        </div>
       </section>
 
       <section className="section-pad">
@@ -279,8 +298,8 @@ export default async function HomePage({
         </div>
       </section>
 
-      <section className="section-pad bg-navy text-center text-ivory">
-        <div className="container-narrow">
+      <section className="section-pad bg-navy text-center text-ivory navy-cta">
+        <div className="container-narrow relative">
           <Reveal>
             <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl">
               {t("ctaTitle")}

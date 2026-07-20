@@ -19,6 +19,7 @@
     "heroEyebrow": "Advocates & Solicitors · Kuala Lumpur",
     "heroTitle": "Legal counsel you can trust",
     "heroSubtitle": "TAN, KONG & ASSOCIATES brings together two seasoned partners — criminal defence excellence and practical civil & corporate advocacy — under one roof at Publika, Mont Kiara.",
+    "heroAlt": "Lawyer reviewing documents in a Kuala Lumpur high-rise office",
     "ctaEnquire": "Book an appointment",
     "ctaWhatsapp": "Chat on WhatsApp",
     "introTitle": "Your legal ally every step of the way",
@@ -76,7 +77,9 @@
   "about": {
     "title": "About the firm",
     "subtitle": "A partnership built on complementary strengths",
+    "heroAlt": "Partners discussing a matter in a Kuala Lumpur office",
     "storyTitle": "Our story",
+    "storyImageAlt": "Statue of Lady Justice holding the scales",
     "story": "TAN, KONG & ASSOCIATES unites the criminal defence practice of Kenny Tan (formerly Tan Cheng Yee & Co) with the civil, corporate and dispute-resolution practice of Melvin Kong (formerly JY Kong Law Firm). Together we offer a full-service boutique firm from our office at Publika Solaris Dutamas, Mont Kiara.",
     "valuesTitle": "Our values",
     "values": {
@@ -109,6 +112,7 @@
   "practice": {
     "title": "Practice areas",
     "subtitle": "Practical legal solutions for individuals, families and businesses",
+    "heroAlt": "Courthouse and scales of justice",
     "jumpTo": "Jump to area",
     "areas": {
       "criminal": {
@@ -219,6 +223,7 @@
   "team": {
     "title": "Our team",
     "subtitle": "Experienced counsel committed to clear advice and strong representation",
+    "heroAlt": "Professional lawyers collaborating in a modern office",
     "viewProfile": "View profile",
     "credentials": "Credentials & focus",
     "languages": "Languages",
@@ -238,6 +243,7 @@
   "careers": {
     "title": "Careers",
     "subtitle": "We believe in our people",
+    "heroAlt": "Bright modern law office workspace",
     "introTitle": "Careers with us",
     "introBody": "You have worked hard to get where you are. We are looking for bright candidates with strong academic skills, a passion for advocacy, and the readiness to assume responsibility early in their legal career — in a supportive boutique environment at Publika, Mont Kiara.",
     "whyTitle": "Why join TAN, KONG & ASSOCIATES",
@@ -284,6 +290,7 @@
   "appointment": {
     "title": "Book an appointment",
     "subtitle": "Tell us a little about your matter and preferred time — we will confirm shortly",
+    "heroAlt": "Elegant desk ready for a legal consultation",
     "formTitle": "Appointment request",
     "name": "Full name",
     "email": "Email",
@@ -321,6 +328,7 @@
   "contact": {
     "title": "Contact us",
     "subtitle": "Submit an enquiry or reach us directly on WhatsApp",
+    "heroAlt": "Contemporary office building exterior",
     "formTitle": "Enquiry form",
     "name": "Full name",
     "email": "Email",

@@ -62,6 +62,44 @@
   .container-narrow {
     @apply mx-auto w-full max-w-6xl;
   }
+
+  /* Branded navy CTA atmosphere — faint geometric gold pattern */
+  .navy-cta {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .navy-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.12;
+    background-image:
+      radial-gradient(circle at 12% 30%, #b8925a 0%, transparent 28%),
+      radial-gradient(circle at 88% 70%, #c9a227 0%, transparent 26%),
+      linear-gradient(
+        135deg,
+        transparent 46%,
+        rgba(184, 146, 90, 0.18) 49%,
+        rgba(184, 146, 90, 0.18) 51%,
+        transparent 54%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 46%,
+        rgba(201, 162, 39, 0.1) 49%,
+        rgba(201, 162, 39, 0.1) 51%,
+        transparent 54%
+      );
+    background-size: auto, auto, 48px 48px, 48px 48px;
+  }
+
+  .navy-cta > * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

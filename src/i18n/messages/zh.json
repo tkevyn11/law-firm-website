@@ -19,6 +19,7 @@
     "heroEyebrow": "律师与事务律师 · 吉隆坡",
     "heroTitle": "值得信赖的法律顾问",
     "heroSubtitle": "陈和江律师事务所汇聚两位资深合伙人——刑事辩护专长与民商事诉讼实务——于满家乐 Publika 同一屋檐下为您服务。",
+    "heroAlt": "律师在吉隆坡高层办公室审阅文件",
     "ctaEnquire": "预约咨询",
     "ctaWhatsapp": "WhatsApp 联系",
     "introTitle": "每一步，我们与您同行",
@@ -76,7 +77,9 @@
   "about": {
     "title": "关于事务所",
     "subtitle": "优势互补的专业合伙",
+    "heroAlt": "合伙人在吉隆坡办公室讨论案件",
     "storyTitle": "我们的故事",
+    "storyImageAlt": "手持天平的正义女神雕像",
     "story": "陈和江律师事务所由陈先生的刑事辩护业务（原 Tan Cheng Yee & Co）与江俊源律师的民商事及争议解决业务（原 JY Kong Law Firm）合并而成。我们在满家乐 Publika Solaris Dutamas 为客户提供精品全方位法律服务。",
     "valuesTitle": "我们的价值观",
     "values": {
@@ -109,6 +112,7 @@
   "practice": {
     "title": "业务领域",
     "subtitle": "为个人、家庭与企业提供务实法律方案",
+    "heroAlt": "法院与正义天平",
     "jumpTo": "跳转至领域",
     "areas": {
       "criminal": {
@@ -219,6 +223,7 @@
   "team": {
     "title": "我们的团队",
     "subtitle": "经验丰富的律师团队，致力于清晰建议与有力代理",
+    "heroAlt": "现代办公室中协作的专业律师",
     "viewProfile": "查看简介",
     "credentials": "资历与专长",
     "languages": "语言",
@@ -238,6 +243,7 @@
   "careers": {
     "title": "加入我们",
     "subtitle": "我们相信人才",
+    "heroAlt": "明亮现代的律师事务所办公空间",
     "introTitle": "与我们共事",
     "introBody": "您已付出努力走到今天。我们寻找学术能力出色、热爱诉讼、并愿意在职业生涯早期承担责任的优秀人才——在满家乐 Publika 的精品事务所环境中成长。",
     "whyTitle": "为何加入陈和江律师事务所",
@@ -284,6 +290,7 @@
   "appointment": {
     "title": "预约咨询",
     "subtitle": "告诉我们您的事宜与偏好时间——我们将尽快确认",
+    "heroAlt": "准备法律咨询的典雅书桌",
     "formTitle": "预约申请",
     "name": "姓名",
     "email": "电邮",
@@ -321,6 +328,7 @@
   "contact": {
     "title": "联系我们",
     "subtitle": "提交咨询或直接通过 WhatsApp 联系",
+    "heroAlt": "当代办公楼外观",
     "formTitle": "咨询表格",
     "name": "姓名",
     "email": "电邮",

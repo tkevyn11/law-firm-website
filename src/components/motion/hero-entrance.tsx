@@ -59,7 +59,11 @@ export function HeroEntrance({
       >
         {title}
       </motion.h1>
-      <motion.div variants={item} className="gold-diamond" />
+      <motion.div
+        variants={item}
+        className="my-4 h-3 w-3 rotate-45 border border-gold bg-gold/20"
+        aria-hidden
+      />
       <motion.p
         variants={item}
         className="mt-2 max-w-2xl text-lg text-ivory/80 sm:text-xl"
