@@ -40,7 +40,7 @@ export function PageHero({
     <section
       className={cn(
         "relative overflow-hidden border-b border-navy/10 bg-navy text-ivory",
-        copyLeft && "min-h-[42vh] sm:min-h-[48vh]",
+        copyLeft && "min-h-[70vh] sm:min-h-[75vh]",
         className
       )}
     >
@@ -83,7 +83,7 @@ export function PageHero({
         title={title}
         subtitle={subtitle}
         align={textAlign}
-        className={cn(copyLeft && "flex min-h-[42vh] flex-col justify-center sm:min-h-[48vh]")}
+        className={cn(copyLeft && "flex min-h-[70vh] flex-col justify-center sm:min-h-[75vh]")}
       />
     </section>
   );

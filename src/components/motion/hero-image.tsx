@@ -28,6 +28,7 @@ export function HeroImage({
       alt={alt}
       fill
       priority={priority}
+      quality={92}
       sizes="100vw"
       className="object-cover object-center"
       style={{ opacity: imageOpacity }}
@@ -47,8 +48,8 @@ export function HeroImage({
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1 }}
-        animate={{ scale: 1.06 }}
-        transition={{ duration: 14, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
+        animate={{ scale: 1.03 }}
+        transition={{ duration: 18, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
       >
         {image}
       </motion.div>

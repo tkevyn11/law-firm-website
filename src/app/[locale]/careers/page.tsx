@@ -41,8 +41,9 @@ export default async function CareersPage({
       <PageHero
         title={t("title")}
         subtitle={t("subtitle")}
-        imageSrc="/hero/careers.jpg"
+        imageSrc="/hero/careers-hero.png"
         imageAlt={t("heroAlt")}
+        layout="copySpaceLeft"
       />
 
       <section className="section-pad">
