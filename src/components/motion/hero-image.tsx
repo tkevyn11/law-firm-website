@@ -11,6 +11,8 @@ type HeroImageProps = {
   className?: string;
   /** Extra opacity on the image itself (0–1). Overlay is separate. */
   imageOpacity?: number;
+  /** object-position / object-* utilities (e.g. mobile right-weighted crop) */
+  objectClassName?: string;
 };
 
 export function HeroImage({
@@ -19,6 +21,7 @@ export function HeroImage({
   priority = false,
   className,
   imageOpacity = 1,
+  objectClassName,
 }: HeroImageProps) {
   const reduce = useReducedMotion();
 
@@ -30,7 +33,7 @@ export function HeroImage({
       priority={priority}
       quality={92}
       sizes="100vw"
-      className="object-cover object-center"
+      className={cn("object-cover object-center", objectClassName)}
       style={{ opacity: imageOpacity }}
     />
   );
