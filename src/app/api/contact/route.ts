@@ -10,6 +10,9 @@ const schema = z.object({
   subject: z.string().min(2).max(200),
   message: z.string().min(10).max(5000),
   partner: z.string().max(80).optional().or(z.literal("")),
+  matterType: z.string().max(80).optional().or(z.literal("")),
+  preferredDate: z.string().max(40).optional().or(z.literal("")),
+  preferredTime: z.string().max(40).optional().or(z.literal("")),
 });
 
 const rateMap = new Map<string, { count: number; reset: number }>();
@@ -52,9 +55,11 @@ export async function POST(request: Request) {
     const data = parsed.data;
     const to = process.env.CONTACT_TO_EMAIL || firm.email;
     const apiKey = process.env.RESEND_API_KEY;
+    const isAppointment = Boolean(
+      data.preferredDate || data.preferredTime || data.matterType
+    );
 
     if (!apiKey) {
-      // Dev fallback: log and succeed so UI can be tested without Resend
       console.info("[contact enquiry]", data);
       return NextResponse.json({
         ok: true,
@@ -68,12 +73,17 @@ export async function POST(request: Request) {
       from: process.env.CONTACT_FROM_EMAIL || "Enquiry <onboarding@resend.dev>",
       to: [to],
       replyTo: data.email,
-      subject: `[Website Enquiry] ${data.subject}`,
+      subject: isAppointment
+        ? `[Appointment] ${data.subject}`
+        : `[Website Enquiry] ${data.subject}`,
       text: [
         `Name: ${data.name}`,
         `Email: ${data.email}`,
         `Phone: ${data.phone || "—"}`,
         `Preferred partner: ${data.partner || "—"}`,
+        `Matter type: ${data.matterType || "—"}`,
+        `Preferred date: ${data.preferredDate || "—"}`,
+        `Preferred time: ${data.preferredTime || "—"}`,
         "",
         data.message,
       ].join("\n"),

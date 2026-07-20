@@ -8,7 +8,10 @@
     "home": "Home",
     "about": "About",
     "practice": "Practice Areas",
+    "team": "Our Team",
+    "careers": "Careers",
     "contact": "Contact",
+    "book": "Book Appointment",
     "enquire": "Enquire Now",
     "whatsapp": "WhatsApp"
   },
@@ -16,7 +19,7 @@
     "heroEyebrow": "Advocates & Solicitors · Kuala Lumpur",
     "heroTitle": "Legal counsel you can trust",
     "heroSubtitle": "TAN, KONG & ASSOCIATES brings together two seasoned partners — criminal defence excellence and practical civil & corporate advocacy — under one roof at Publika, Mont Kiara.",
-    "ctaEnquire": "Submit an enquiry",
+    "ctaEnquire": "Book an appointment",
     "ctaWhatsapp": "Chat on WhatsApp",
     "introTitle": "Your legal ally every step of the way",
     "introBody": "We stand by individuals, families and businesses with clear advice, strategic advocacy and unwavering protection. From urgent police detention to complex commercial disputes, we deliver practical solutions with integrity.",
@@ -50,9 +53,25 @@
       "languages": "Languages spoken",
       "location": "At the heart of Mont Kiara"
     },
+    "testimonialsTitle": "What clients say",
+    "testimonialsSubtitle": "Voices of trust from people we have guided through challenging times",
+    "testimonials": {
+      "t1": {
+        "quote": "When I faced a criminal charge, Kenny explained every step clearly and fought hard for my release. I felt protected at every stage.",
+        "author": "A.L., Criminal defence client"
+      },
+      "t2": {
+        "quote": "Melvin handled our company dispute with professionalism and calm strategy. We reached a practical settlement without unnecessary delay.",
+        "author": "S.W., Corporate client"
+      },
+      "t3": {
+        "quote": "The firm responded quickly on WhatsApp, spoke to me in Mandarin, and guided my family through a difficult property matter with care.",
+        "author": "C.H., Property client"
+      }
+    },
     "ctaTitle": "Need legal advice?",
     "ctaBody": "Reach us by form, WhatsApp or phone. We respond promptly to urgent matters.",
-    "ctaButton": "Contact the firm"
+    "ctaButton": "Book an appointment"
   },
   "about": {
     "title": "About the firm",
@@ -84,45 +103,220 @@
       "focus": "Debt recovery, shareholder & contractual disputes, corporate agreements, personal injury, family law and property transactions."
     },
     "credentials": "Credentials & focus",
-    "languages": "Languages"
+    "languages": "Languages",
+    "viewProfile": "View full profile"
   },
   "practice": {
     "title": "Practice areas",
     "subtitle": "Practical legal solutions for individuals, families and businesses",
+    "jumpTo": "Jump to area",
     "areas": {
       "criminal": {
         "title": "Criminal defence",
-        "body": "Strategic defence for criminal charges, bail applications, police detention releases and court representation — including matters involving foreign nationals."
+        "body": "Strategic defence for criminal charges, bail applications, police detention releases and court representation — including matters involving foreign nationals.",
+        "services": [
+          "Remand & police detention",
+          "Bail applications",
+          "Mitigation & plea bargaining",
+          "Court representation",
+          "Road transport offences",
+          "Penal Code offences",
+          "Drug-related offences",
+          "Assault & violence offences",
+          "Foreign nationals & immigration-related criminal matters"
+        ]
       },
       "civil": {
         "title": "Civil litigation",
-        "body": "Dispute resolution and courtroom advocacy for commercial and private civil claims, with a focus on practical outcomes."
+        "body": "Dispute resolution and courtroom advocacy for commercial and private civil claims, with a focus on practical outcomes.",
+        "services": [
+          "Commercial & contractual disputes",
+          "Defamation",
+          "Negligence & tort claims",
+          "Consumer disputes",
+          "Land & property disputes",
+          "Writ of seizure and sale",
+          "Writ of possession",
+          "Mediation & dispute resolution"
+        ]
       },
       "debt": {
         "title": "Debt recovery & fraud",
-        "body": "Swift action to protect cash flow and reputation — garnishee proceedings, execution, bankruptcy and winding-up advice."
+        "body": "Swift action to protect cash flow and reputation — garnishee proceedings, execution, bankruptcy and winding-up advice.",
+        "services": [
+          "Debt recovery actions",
+          "Garnishee proceedings",
+          "Bankruptcy & winding-up advice",
+          "Fraud & commercial crime claims",
+          "Execution of judgments",
+          "Distress actions"
+        ]
       },
       "corporate": {
         "title": "Corporate & commercial",
-        "body": "Shareholder disputes, contractual breaches, share purchase and joint venture agreements, and board-level counsel."
+        "body": "Shareholder disputes, contractual breaches, share purchase and joint venture agreements, and board-level counsel.",
+        "services": [
+          "Share purchase agreements",
+          "Joint venture & partnership agreements",
+          "Shareholder & directors' disputes",
+          "Agency & subcontracting agreements",
+          "Company set-up advice",
+          "Franchising & licensing",
+          "Intellectual property advice"
+        ]
       },
       "personal-injury": {
         "title": "Personal injury & motor claims",
-        "body": "Accident briefs, quantum assessment, insurance negotiations and trials for injury and motor vehicle claims."
+        "body": "Accident briefs, quantum assessment, insurance negotiations and trials for injury and motor vehicle claims.",
+        "services": [
+          "Motor vehicle accident claims",
+          "Personal injury assessment",
+          "Insurance negotiations",
+          "Medical / professional negligence",
+          "Quantum advice & settlement"
+        ]
       },
       "family": {
         "title": "Family law & mediation",
-        "body": "Divorce, custody, maintenance and mediation — supportive representation for sensitive family matters."
+        "body": "Divorce, custody, maintenance and mediation — supportive representation for sensitive family matters.",
+        "services": [
+          "Divorce (joint & contested)",
+          "Child custody, care & control",
+          "Child access",
+          "Spousal maintenance",
+          "Matrimonial property division",
+          "Domestic violence applications",
+          "Mediation for family disputes"
+        ]
       },
       "property": {
         "title": "Property & conveyancing",
-        "body": "Due diligence, agreements and secure transactions for residential and commercial property purchases."
+        "body": "Due diligence, agreements and secure transactions for residential and commercial property purchases.",
+        "services": [
+          "Sale & purchase of residential property",
+          "Commercial & industrial conveyancing",
+          "Lease & tenancy",
+          "Power of attorney",
+          "Trust deeds",
+          "Foreigner property acquisition",
+          "Late delivery & strata management disputes"
+        ]
       },
       "employment": {
         "title": "Employment & industrial",
-        "body": "Unfair dismissal claims at the Industrial Court, employment advice and workplace dispute resolution."
+        "body": "Unfair dismissal claims at the Industrial Court, employment advice and workplace dispute resolution.",
+        "services": [
+          "Employment contract drafting",
+          "Unfair / wrongful dismissal",
+          "Industrial Court representation",
+          "Labour Office disputes",
+          "Disciplinary process advice",
+          "Termination & cessation of employment"
+        ]
       }
     }
+  },
+  "team": {
+    "title": "Our team",
+    "subtitle": "Experienced counsel committed to clear advice and strong representation",
+    "viewProfile": "View profile",
+    "credentials": "Credentials & focus",
+    "languages": "Languages",
+    "contact": "Contact",
+    "backToTeam": "Back to team",
+    "members": {
+      "kenny-tan": {
+        "bio": "Kenny Tan is a criminal defence lawyer with over a decade of experience. Since establishing his practice in 2020 he has defended more than 1,000 criminal cases, helping local and foreign clients secure release from detention or acquittal. He is known for practical, aggressive and strategic defence tactics — securing bail, negotiating police releases, and protecting fundamental rights in court.",
+        "focus": "Criminal law, bail applications, police detention, foreign clients, civil litigation and family matters."
+      },
+      "melvin-kong": {
+        "bio": "Melvin Kong (Kong Jiun Yuan) holds an LL.B. (Hons.) from Multimedia University (2013). He has practised banking litigation, debt recovery, personal injury and motor accident claims, and corporate commercial work — including share purchase and joint venture agreements. He has also advised a Vietnamese company as legal counsel in Ho Chi Minh City, collaborating with counsel across ASEAN and the United States.",
+        "focus": "Debt recovery, shareholder & contractual disputes, corporate agreements, personal injury, family law and property transactions."
+      }
+    }
+  },
+  "careers": {
+    "title": "Careers",
+    "subtitle": "We believe in our people",
+    "introTitle": "Careers with us",
+    "introBody": "You have worked hard to get where you are. We are looking for bright candidates with strong academic skills, a passion for advocacy, and the readiness to assume responsibility early in their legal career — in a supportive boutique environment at Publika, Mont Kiara.",
+    "whyTitle": "Why join TAN, KONG & ASSOCIATES",
+    "why": {
+      "mentorship": {
+        "title": "Hands-on mentorship",
+        "body": "Work closely with partners on real files from day one — criminal defence, civil litigation and corporate matters."
+      },
+      "growth": {
+        "title": "Early responsibility",
+        "body": "A boutique firm means meaningful work, courtroom exposure and clear pathways to grow your practice."
+      },
+      "culture": {
+        "title": "Collegial culture",
+        "body": "A congenial environment with like-minded people who value integrity, clear communication and results."
+      }
+    },
+    "rolesTitle": "Opportunities",
+    "roles": {
+      "associates": {
+        "title": "Lawyers / Associates",
+        "body": "We welcome applications from advocates & solicitors who thrive in dispute resolution and client-facing work. Strong written and oral advocacy skills are essential."
+      },
+      "pupils": {
+        "title": "Pupils-in-Chambers",
+        "body": "Pupillage with exposure across criminal defence and civil & commercial practice. We seek pupils with strong academics and a genuine interest in advocacy."
+      },
+      "interns": {
+        "title": "Internships & attachments",
+        "body": "Short-term attachments for law students seeking practical insight into boutique litigation and conveyancing practice."
+      },
+      "paralegals": {
+        "title": "Paralegals / litigation secretaries",
+        "body": "Support roles for organised, discreet professionals who keep files, diaries and client communications running smoothly."
+      }
+    },
+    "remunerationTitle": "Remuneration",
+    "remunerationBody": "We offer competitive packages commensurate with experience, plus a supportive environment for professional development. Details are discussed with shortlisted candidates.",
+    "applyTitle": "How to apply",
+    "applyBody": "To submit a résumé or request more information about employment opportunities, please email us. You may also book an appointment if you prefer a conversation first.",
+    "applyEmail": "Email your application",
+    "applyBook": "Book an appointment"
+  },
+  "appointment": {
+    "title": "Book an appointment",
+    "subtitle": "Tell us a little about your matter and preferred time — we will confirm shortly",
+    "formTitle": "Appointment request",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "matterType": "Matter type",
+    "matterTypes": {
+      "criminal": "Criminal defence",
+      "civil": "Civil litigation",
+      "debt": "Debt recovery & fraud",
+      "corporate": "Corporate & commercial",
+      "personal-injury": "Personal injury & motor claims",
+      "family": "Family law",
+      "property": "Property & conveyancing",
+      "employment": "Employment",
+      "other": "Other / not sure"
+    },
+    "preferredDate": "Preferred date",
+    "preferredTime": "Preferred time",
+    "times": {
+      "morning": "Morning (9am – 12pm)",
+      "afternoon": "Afternoon (12pm – 3pm)",
+      "evening": "Late afternoon (3pm – 6pm)"
+    },
+    "partner": "Preferred partner (optional)",
+    "partnerAny": "No preference",
+    "message": "Briefly describe your matter",
+    "submit": "Request appointment",
+    "sending": "Sending…",
+    "success": "Thank you. Your appointment request has been sent. We will confirm shortly.",
+    "error": "Something went wrong. Please try WhatsApp or call us directly.",
+    "disclaimer": "Requesting an appointment does not create a solicitor-client relationship. Please do not include highly confidential details in the form.",
+    "altTitle": "Prefer WhatsApp?",
+    "altBody": "Message a partner directly for urgent matters."
   },
   "contact": {
     "title": "Contact us",
@@ -148,7 +342,14 @@
   "footer": {
     "quickLinks": "Quick links",
     "contact": "Contact",
+    "hours": "Working hours",
     "rights": "All rights reserved.",
     "disclaimer": "This website provides general information only and does not constitute legal advice."
+  },
+  "whatsappWidget": {
+    "title": "Need help? Chat with us",
+    "subtitle": "Click a partner to start a WhatsApp conversation. We typically reply within business hours.",
+    "open": "Chat on WhatsApp",
+    "close": "Close"
   }
 }

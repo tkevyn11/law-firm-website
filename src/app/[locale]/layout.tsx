@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { WhatsappWidget } from "@/components/layout/whatsapp-widget";
 import { JsonLd } from "@/components/seo/json-ld";
 import { firm } from "@/lib/firm";
 import "../globals.css";
@@ -83,7 +84,8 @@ export default async function LocaleLayout({
           <JsonLd />
           <Header />
           <main>{children}</main>
-          <Footer />
+          <Footer locale={locale} />
+          <WhatsappWidget />
         </NextIntlClientProvider>
       </body>
     </html>
