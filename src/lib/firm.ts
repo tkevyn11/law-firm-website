@@ -8,7 +8,7 @@ export const firm = {
     line3: "Mont Kiara, 50480 Kuala Lumpur",
     country: "Malaysia",
   },
-  email: "info@tankong.my", // placeholder until official email confirmed
+  email: "general@tkalegal.com",
   phone: "+6012-355 0556",
   hours: {
     weekdays: "Monday – Friday · 9:00 am – 6:00 pm",
@@ -42,17 +42,17 @@ export const partners = [
   {
     id: "melvin-kong",
     slug: "melvin-kong",
-    name: "Melvin Kong",
+    name: "Kong Jiun Yuan (Melvin)",
     nameZh: "江俊源",
     role: "Partner · Civil & Corporate",
     roleZh: "合伙人 · 民事与公司法",
-    phones: ["+6012-666 3181", "+6011-1163 3181"],
+    phones: ["+6012-666 3181"],
     whatsapp: "60126663181",
     email: "jykongmelvin@gmail.com",
     languages: ["Bahasa Malaysia", "English", "Mandarin"],
     highlight: "10+",
     highlightLabel: "years of practice",
-    photo: "",
+    photo: "/partners/melvin-kong.png",
   },
 ] as const;
 
