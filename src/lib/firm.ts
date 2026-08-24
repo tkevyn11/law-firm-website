@@ -37,7 +37,7 @@ export const partners = [
     languages: ["English", "Chinese", "Bahasa Malaysia"],
     highlight: "1000+",
     highlightLabel: "criminal cases defended",
-    photo: "/partners/kenny-tan.jpg",
+    photo: "/partners/kenny-tan.jpg" as string,
   },
   {
     id: "melvin-kong",
@@ -52,7 +52,7 @@ export const partners = [
     languages: ["Bahasa Malaysia", "English", "Mandarin"],
     highlight: "10+",
     highlightLabel: "years of practice",
-    photo: "/partners/melvin-kong.png",
+    photo: "/partners/melvin-kong.png" as string,
   },
 ] as const;
 
