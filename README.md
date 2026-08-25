@@ -9,6 +9,8 @@ A bilingual (English / 中文) marketing and enquiry website for **TAN, KONG & A
 
 **Live site:** [law-firm-website-one-pied.vercel.app](https://law-firm-website-one-pied.vercel.app)
 
+![Home hero](docs/screenshots/hero.jpg)
+
 ## Project Overview
 
 A two-partner law firm needed a credible online presence that serves a client base split across three languages, while ranking for local legal searches and surfacing correctly in AI assistants.
@@ -60,6 +62,26 @@ A two-partner law firm needed a credible online presence that serves a client ba
 - **[Framer Motion](https://www.framer.com/motion/)** — scroll reveals and Ken Burns hero motion, all `prefers-reduced-motion` aware
 - **[Resend](https://resend.com/)** + **[Zod](https://zod.dev/)** — transactional email and validation
 - **[Vercel](https://vercel.com/)** — edge deployment with preview builds
+
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="docs/screenshots/bilingual.jpg" alt="Chinese locale of the home page" /><br />
+      <sub>Same page at <code>/zh</code> — navigation, hero copy, and CTAs all localized</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="docs/screenshots/practice-areas.jpg" alt="Practice areas directory" /><br />
+      <sub>Practice areas with filterable tags</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <img src="docs/screenshots/mobile.png" alt="Mobile home page" width="320" /><br />
+  <sub>Mobile layout with focal-point hero cropping</sub>
+</p>
 
 ## Quick Start
 
