@@ -247,7 +247,9 @@ export default async function HomePage({
                       </p>
                       <p className="text-sm text-navy/60">{p.highlightLabel}</p>
                       <p className="mt-4 text-sm text-navy/70">
-                        {p.languages.join(" · ")}
+                        {(locale === "zh" ? p.languagesZh : p.languages).join(
+                          locale === "zh" ? "，" : " · "
+                        )}
                       </p>
                       <Button
                         asChild

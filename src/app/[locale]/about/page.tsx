@@ -174,7 +174,10 @@ export default async function AboutPage({
                       {t("languages")}
                     </h4>
                     <p className="mt-2 text-sm text-navy/70">
-                      {partner.languages.join(" · ")}
+                      {(locale === "zh"
+                        ? partner.languagesZh
+                        : partner.languages
+                      ).join(locale === "zh" ? "，" : " · ")}
                     </p>
                     <div className="mt-4 space-y-1 text-sm text-navy/60">
                       {partner.phones.map((phone) => (

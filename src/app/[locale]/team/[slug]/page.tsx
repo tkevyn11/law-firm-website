@@ -123,7 +123,10 @@ export default async function TeamMemberPage({
                   {t("languages")}
                 </h2>
                 <p className="mt-2 text-sm text-navy/70">
-                  {member.languages.join(" · ")}
+                  {(locale === "zh"
+                    ? member.languagesZh
+                    : member.languages
+                  ).join(locale === "zh" ? "，" : " · ")}
                 </p>
                 <h2 className="mt-4 font-serif text-lg text-navy">
                   {t("contact")}
