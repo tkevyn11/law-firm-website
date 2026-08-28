@@ -4,6 +4,7 @@ import { EnquiryForm } from "@/components/contact/enquiry-form";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
 import { firm, partners, whatsappUrl } from "@/lib/firm";
+import { routeSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,10 +16,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical: `/${locale}/contact`,
-      languages: { en: "/en/contact", zh: "/zh/contact" },
-    },
+    ...routeSeo(locale, "/contact"),
   };
 }
 

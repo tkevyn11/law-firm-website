@@ -11,6 +11,7 @@ import {
   telHref,
   whatsappUrl,
 } from "@/lib/firm";
+import { routeSeo } from "@/lib/seo";
 
 export function generateStaticParams() {
   return team.map((m) => ({ slug: m.slug }));
@@ -29,13 +30,7 @@ export async function generateMetadata({
   return {
     title: name,
     description: t(`members.${member.slug}.focus`),
-    alternates: {
-      canonical: `/${locale}/team/${slug}`,
-      languages: {
-        en: `/en/team/${slug}`,
-        zh: `/zh/team/${slug}`,
-      },
-    },
+    ...routeSeo(locale, `/team/${slug}`),
   };
 }
 

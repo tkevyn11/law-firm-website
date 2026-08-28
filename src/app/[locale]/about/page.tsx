@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { partners, telHref, whatsappUrl } from "@/lib/firm";
+import { routeSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -18,10 +19,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical: `/${locale}/about`,
-      languages: { en: "/en/about", zh: "/zh/about" },
-    },
+    ...routeSeo(locale, "/about"),
   };
 }
 

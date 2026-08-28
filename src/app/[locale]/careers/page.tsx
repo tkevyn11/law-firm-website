@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { firm } from "@/lib/firm";
+import { routeSeo } from "@/lib/seo";
 
 const whyKeys = ["mentorship", "growth", "culture"] as const;
 const roleKeys = ["associates", "pupils", "interns", "paralegals"] as const;
@@ -20,10 +21,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical: `/${locale}/careers`,
-      languages: { en: "/en/careers", zh: "/zh/careers" },
-    },
+    ...routeSeo(locale, "/careers"),
   };
 }
 

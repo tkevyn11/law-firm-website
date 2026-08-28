@@ -16,6 +16,7 @@ import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { HoverLift } from "@/components/motion/hover-lift";
 import { practiceAreaIds, type PracticeAreaId } from "@/lib/firm";
+import { routeSeo } from "@/lib/seo";
 
 const icons: Record<PracticeAreaId, typeof Scale> = {
   criminal: Gavel,
@@ -38,13 +39,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical: `/${locale}/practice-areas`,
-      languages: {
-        en: "/en/practice-areas",
-        zh: "/zh/practice-areas",
-      },
-    },
+    ...routeSeo(locale, "/practice-areas"),
   };
 }
 

@@ -7,7 +7,7 @@
 
 A bilingual (English / 中文) marketing and enquiry website for **TAN, KONG & ASSOCIATES** (陈和江律师事务所), a boutique Advocates & Solicitors practice in Publika, Mont Kiara, Kuala Lumpur.
 
-**Live site:** [law-firm-website-one-pied.vercel.app](https://law-firm-website-one-pied.vercel.app)
+**Live site:** [www.tkalegal.my](https://www.tkalegal.my)
 
 ![Home hero](docs/screenshots/hero.jpg)
 
@@ -99,7 +99,7 @@ Enquiries are logged to the console until `RESEND_API_KEY` is set, so the contac
 
 | Variable | Purpose |
 |----------|---------|
-| `NEXT_PUBLIC_SITE_URL` | Canonical URL for sitemap, `hreflang`, and Open Graph tags |
+| `NEXT_PUBLIC_SITE_URL` | Overrides the canonical origin used by sitemap, `hreflang`, and Open Graph tags. Unset in production — defaults to `https://www.tkalegal.my` |
 | `RESEND_API_KEY` | Email delivery (optional in dev — enquiries are logged instead) |
 | `CONTACT_TO_EMAIL` | Inbox that receives form submissions |
 | `CONTACT_FROM_EMAIL` | Verified Resend from-address |

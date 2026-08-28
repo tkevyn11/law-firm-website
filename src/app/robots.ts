@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
-import { firm } from "@/lib/firm";
+import { SITE_URL } from "@/lib/firm";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = firm.siteUrl.replace(/\/$/, "");
   return {
     rules: [
       {
@@ -30,6 +29,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

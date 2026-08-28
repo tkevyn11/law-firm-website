@@ -2,11 +2,14 @@
 
 > Boutique Advocates & Solicitors (Peguambela & Peguamcara) in Publika, Mont Kiara, Kuala Lumpur, Malaysia.
 
+Website: https://www.tkalegal.my
+
 ## Firm
 - English name: TAN, KONG & ASSOCIATES
 - Chinese name: 陈和江律师事务所
 - Address: C4-2-9, Block C4, Publika Solaris Dutamas, No. 1, Jalan Dutamas 1, Mont Kiara, 50480 Kuala Lumpur
 - Phone: +6012-355 0556
+- Email: general@tkalegal.com
 - Languages: English, Chinese (Mandarin), Bahasa Malaysia
 
 ## Partners
@@ -17,10 +20,19 @@
 Criminal defence; Civil litigation; Debt recovery & fraud; Corporate & commercial; Personal injury & motor claims; Family law & mediation; Property & conveyancing; Employment & industrial claims
 
 ## Site pages
-- /en and /zh — Home
-- /en/about · /zh/about — Firm story and partner bios
-- /en/practice-areas · /zh/practice-areas — Practice areas
-- /en/contact · /zh/contact — Enquiry form, WhatsApp, map
+English pages are under `/en`, Chinese pages under `/zh`. Each page has an
+equivalent in the other language at the same path.
+
+- https://www.tkalegal.my/en — Home
+- https://www.tkalegal.my/en/about — Firm story and partner bios
+- https://www.tkalegal.my/en/practice-areas — Practice areas
+- https://www.tkalegal.my/en/team — Partners listing
+- https://www.tkalegal.my/en/careers — Careers and open roles
+- https://www.tkalegal.my/en/book-appointment — Appointment booking
+- https://www.tkalegal.my/en/contact — Enquiry form, WhatsApp, map
+
+Chinese equivalents: https://www.tkalegal.my/zh, /zh/about, /zh/practice-areas,
+/zh/team, /zh/careers, /zh/book-appointment, /zh/contact
 
 ## Contact
 Submit an enquiry via the website contact form or WhatsApp the partners. Sending an enquiry does not create a solicitor-client relationship.

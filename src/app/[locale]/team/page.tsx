@@ -7,6 +7,7 @@ import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { HoverLift } from "@/components/motion/hover-lift";
 import { team } from "@/lib/firm";
+import { routeSeo } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -18,10 +19,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical: `/${locale}/team`,
-      languages: { en: "/en/team", zh: "/zh/team" },
-    },
+    ...routeSeo(locale, "/team"),
   };
 }
 

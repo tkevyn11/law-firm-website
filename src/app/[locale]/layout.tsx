@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { WhatsappWidget } from "@/components/layout/whatsapp-widget";
 import { JsonLd } from "@/components/seo/json-ld";
 import { firm } from "@/lib/firm";
+import { localeAlternates, openGraphFor } from "@/lib/seo";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -30,20 +31,11 @@ export async function generateMetadata({
     },
     description,
     metadataBase: new URL(firm.siteUrl),
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        en: "/en",
-        zh: "/zh",
-        "x-default": "/en",
-      },
-    },
+    alternates: localeAlternates(locale),
     openGraph: {
       title,
       description,
-      locale: locale === "zh" ? "zh_CN" : "en_MY",
-      type: "website",
-      images: [{ url: "/logo.png", width: 512, height: 256, alt: firm.name }],
+      ...openGraphFor(locale),
     },
     twitter: {
       card: "summary_large_image",

@@ -1,3 +1,12 @@
+/**
+ * Canonical production origin. Every canonical URL, hreflang alternate,
+ * sitemap entry and JSON-LD `@id` is derived from this single value.
+ * Trailing slashes are stripped so `${SITE_URL}/path` never doubles up.
+ */
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.tkalegal.my"
+).replace(/\/+$/, "");
+
 export const firm = {
   name: "TAN, KONG & ASSOCIATES",
   nameZh: "陈和江律师事务所",
@@ -20,7 +29,7 @@ export const firm = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7!2d101.665!3d3.172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc483f0b0b0b0b%3A0x0!2sPublika%20Solaris%20Dutamas!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy",
   mapSearchUrl:
     "https://www.google.com/maps/search/?api=1&query=Publika+Solaris+Dutamas+Mont+Kiara",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://tankong.my",
+  siteUrl: SITE_URL,
 } as const;
 
 export const partners = [
