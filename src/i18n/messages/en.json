@@ -1,8 +1,23 @@
 {
   "meta": {
     "siteName": "TAN, KONG & ASSOCIATES",
+    "titleDefault": "Advocates & Solicitors in Kuala Lumpur",
     "tagline": "Clear advice. Strong representation. Peace of mind.",
     "description": "Boutique advocates & solicitors in Publika, Mont Kiara, Kuala Lumpur. Criminal defence, civil litigation, corporate, family and property law. English & Chinese speaking."
+  },
+  "faq": {
+    "location": {
+      "question": "Where is TAN, KONG & ASSOCIATES located?",
+      "answer": "C4-2-9, Block C4, Publika Solaris Dutamas, No. 1, Jalan Dutamas 1, Mont Kiara, 50480 Kuala Lumpur, Malaysia."
+    },
+    "practiceAreas": {
+      "question": "What practice areas does the firm cover?",
+      "answer": "Criminal defence, civil litigation, debt recovery, corporate and commercial law, personal injury and motor claims, family law, property conveyancing, and employment/industrial matters."
+    },
+    "languages": {
+      "question": "Does the firm speak Chinese?",
+      "answer": "Yes. The firm offers services in English, Chinese (Mandarin and Cantonese) and Bahasa Malaysia, and regularly assists foreign clients."
+    }
   },
   "nav": {
     "home": "Home",
@@ -13,7 +28,11 @@
     "contact": "Contact",
     "book": "Book Appointment",
     "enquire": "Enquire Now",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "main": "Main",
+    "mobile": "Mobile",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "home": {
     "heroEyebrow": "Advocates & Solicitors · Kuala Lumpur",
@@ -43,7 +62,7 @@
       },
       "multilingual": {
         "title": "Multilingual counsel",
-        "body": "English, Chinese and Bahasa Malaysia — serving local and foreign clients with care."
+        "body": "English, Chinese (Mandarin and Cantonese) and Bahasa Malaysia — serving local and foreign clients with care."
       }
     },
     "partnersTitle": "Our partners",
@@ -77,6 +96,10 @@
   "about": {
     "title": "About the firm",
     "subtitle": "A partnership built on complementary strengths",
+    "seo": {
+      "title": "About Our Kuala Lumpur Law Firm",
+      "description": "TAN, KONG & ASSOCIATES unites Kenny Tan's criminal defence practice with Kong Jiun Yuan's civil and corporate practice at Publika, Mont Kiara, Kuala Lumpur."
+    },
     "heroAlt": "Partners discussing a matter in a Kuala Lumpur office",
     "storyTitle": "Our story",
     "storyImageAlt": "Statue of Lady Justice holding the scales",
@@ -112,6 +135,12 @@
   "practice": {
     "title": "Practice areas",
     "subtitle": "Practical legal solutions for individuals, families and businesses",
+    "seo": {
+      "title": "Practice Areas in Kuala Lumpur",
+      "description": "Criminal defence, civil litigation, debt recovery, corporate, personal injury, family, property and employment law from our Mont Kiara, Kuala Lumpur office."
+    },
+    "whoTitle": "Who will handle your matter",
+    "whoBody": "Both partners work directly with clients. See their backgrounds before you get in touch.",
     "heroAlt": "Courthouse and scales of justice",
     "jumpTo": "Jump to area",
     "areas": {
@@ -224,7 +253,13 @@
     "title": "Our team",
     "subtitle": "Experienced counsel committed to clear advice and strong representation",
     "heroAlt": "Professional lawyers collaborating in a modern office",
+    "seo": {
+      "title": "Our Lawyers in Kuala Lumpur",
+      "description": "Meet the partners of TAN, KONG & ASSOCIATES — Kenny Tan for criminal defence and Kong Jiun Yuan (Melvin) for civil and corporate matters, in Mont Kiara."
+    },
+    "explorePractice": "Explore our practice areas",
     "viewProfile": "View profile",
+    "relatedPractice": "Related practice areas",
     "credentials": "Credentials & focus",
     "languages": "Languages",
     "contact": "Contact",
@@ -232,17 +267,29 @@
     "members": {
       "kenny-tan": {
         "bio": "Kenny Tan is a criminal defence lawyer with over a decade of experience. Since establishing his practice in 2020 he has defended more than 1,000 criminal cases, helping local and foreign clients secure release from detention or acquittal. He is known for practical, aggressive and strategic defence tactics — securing bail, negotiating police releases, and protecting fundamental rights in court.",
-        "focus": "Criminal law, bail applications, police detention, foreign clients, civil litigation and family matters."
+        "focus": "Criminal law, bail applications, police detention, foreign clients, civil litigation and family matters.",
+        "seo": {
+          "title": "Kenny Tan | Criminal Defence Lawyer, Kuala Lumpur",
+          "description": "Kenny Tan is a criminal defence lawyer in Kuala Lumpur handling bail applications, police detention, court representation and matters involving foreign nationals."
+        }
       },
       "melvin-kong": {
         "bio": "Kong Jiun Yuan (Melvin) holds an LL.B. (Hons.) from Multimedia University (2013). He has practised banking litigation, debt recovery, personal injury and motor accident claims, and corporate commercial work — including share purchase and joint venture agreements. He has also advised a Vietnamese company as legal counsel in Ho Chi Minh City, collaborating with counsel across ASEAN and the United States.",
-        "focus": "Debt recovery, shareholder & contractual disputes, corporate agreements, personal injury, family law and property transactions."
+        "focus": "Debt recovery, shareholder & contractual disputes, corporate agreements, personal injury, family law and property transactions.",
+        "seo": {
+          "title": "Kong Jiun Yuan (Melvin) | Civil & Corporate Lawyer",
+          "description": "Kong Jiun Yuan (Melvin) handles debt recovery, shareholder and contractual disputes, corporate agreements, personal injury and property matters in Kuala Lumpur."
+        }
       }
     }
   },
   "careers": {
     "title": "Careers",
     "subtitle": "We believe in our people",
+    "seo": {
+      "title": "Careers & Pupillage",
+      "description": "Associate, pupillage, internship and paralegal opportunities at a boutique law firm in Publika, Mont Kiara, Kuala Lumpur, with hands-on partner mentorship."
+    },
     "heroAlt": "Bright modern law office workspace",
     "introTitle": "Careers with us",
     "introBody": "You have worked hard to get where you are. We are looking for bright candidates with strong academic skills, a passion for advocacy, and the readiness to assume responsibility early in their legal career — in a supportive boutique environment at Publika, Mont Kiara.",
@@ -290,6 +337,10 @@
   "appointment": {
     "title": "Book an appointment",
     "subtitle": "Tell us a little about your matter and preferred time — we will confirm shortly",
+    "seo": {
+      "title": "Book an Appointment",
+      "description": "Request an appointment with a partner at TAN, KONG & ASSOCIATES. Tell us your matter type and preferred time and we will confirm shortly. Kuala Lumpur."
+    },
     "heroAlt": "Elegant desk ready for a legal consultation",
     "formTitle": "Appointment request",
     "name": "Full name",
@@ -328,6 +379,10 @@
   "contact": {
     "title": "Contact us",
     "subtitle": "Submit an enquiry or reach us directly on WhatsApp",
+    "seo": {
+      "title": "Contact Us in Kuala Lumpur",
+      "description": "Contact TAN, KONG & ASSOCIATES at Publika Solaris Dutamas, Mont Kiara, Kuala Lumpur. Enquiry form, WhatsApp or phone — English, Chinese and Bahasa Malaysia."
+    },
     "heroAlt": "Contemporary office building exterior",
     "formTitle": "Enquiry form",
     "name": "Full name",
@@ -345,6 +400,8 @@
     "hours": "By appointment · Urgent matters available",
     "whatsappTitle": "WhatsApp a partner",
     "mapTitle": "Find us at Publika",
+    "openMap": "Open in Google Maps",
+    "mapIframeTitle": "Map of Publika Solaris Dutamas, Mont Kiara",
     "disclaimer": "Sending an enquiry does not create a solicitor-client relationship. Please do not include highly confidential details in the form."
   },
   "footer": {

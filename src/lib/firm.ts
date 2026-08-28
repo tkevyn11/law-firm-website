@@ -45,8 +45,11 @@ export const partners = [
     email: "info@tcycolegal.com",
     languages: ["English", "Bahasa Malaysia", "Mandarin", "Cantonese"],
     languagesZh: ["英语", "马来语", "华语", "粤语"],
+    /** BCP-47 codes for the languages above, for schema.org knowsLanguage. */
+    languageCodes: ["en", "ms", "zh", "yue"],
     highlight: "1000+",
     highlightLabel: "criminal cases defended",
+    highlightLabelZh: "刑事案件代理",
     photo: "/partners/kenny-tan.jpg" as string,
   },
   {
@@ -61,8 +64,11 @@ export const partners = [
     email: "jykongmelvin@gmail.com",
     languages: ["English", "Bahasa Malaysia", "Mandarin"],
     languagesZh: ["英语", "马来语", "华语"],
+    /** BCP-47 codes for the languages above, for schema.org knowsLanguage. */
+    languageCodes: ["en", "ms", "zh"],
     highlight: "10+",
     highlightLabel: "years of practice",
+    highlightLabelZh: "执业年资",
     photo: "/partners/melvin-kong.png" as string,
   },
 ] as const;
@@ -84,6 +90,25 @@ export const practiceAreaIds = [
 ] as const;
 
 export type PracticeAreaId = (typeof practiceAreaIds)[number];
+
+/**
+ * Practice-area IDs already named in each partner's published focus copy.
+ * Employment is listed at firm level only — neither partner names it.
+ */
+export const partnerPracticeAreas: Record<
+  (typeof partners)[number]["slug"],
+  readonly PracticeAreaId[]
+> = {
+  "kenny-tan": ["criminal", "civil", "family"],
+  "melvin-kong": [
+    "debt",
+    "civil",
+    "corporate",
+    "personal-injury",
+    "family",
+    "property",
+  ],
+};
 
 export function getTeamMember(slug: string) {
   return team.find((m) => m.slug === slug);

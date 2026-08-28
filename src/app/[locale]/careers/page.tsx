@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
+import { PageJsonLd } from "@/components/seo/json-ld";
 import { firm } from "@/lib/firm";
 import { routeSeo } from "@/lib/seo";
 
@@ -19,8 +20,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "careers" });
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    title: t("seo.title"),
+    description: t("seo.description"),
     ...routeSeo(locale, "/careers"),
   };
 }
@@ -33,9 +34,20 @@ export default async function CareersPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("careers");
+  const tn = await getTranslations("nav");
 
   return (
     <>
+      <PageJsonLd
+        locale={locale}
+        path="/careers"
+        name={t("seo.title")}
+        description={t("seo.description")}
+        trail={[
+          { name: tn("home"), path: "" },
+          { name: tn("careers"), path: "/careers" },
+        ]}
+      />
       <PageHero
         title={t("title")}
         subtitle={t("subtitle")}

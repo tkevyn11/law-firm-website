@@ -15,7 +15,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { HoverLift } from "@/components/motion/hover-lift";
-import { practiceAreaIds, type PracticeAreaId } from "@/lib/firm";
+import { PageJsonLd } from "@/components/seo/json-ld";
+import { partners, practiceAreaIds, type PracticeAreaId } from "@/lib/firm";
 import { routeSeo } from "@/lib/seo";
 
 const icons: Record<PracticeAreaId, typeof Scale> = {
@@ -37,8 +38,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "practice" });
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    title: t("seo.title"),
+    description: t("seo.description"),
     ...routeSeo(locale, "/practice-areas"),
   };
 }
@@ -52,9 +53,20 @@ export default async function PracticeAreasPage({
   setRequestLocale(locale);
   const t = await getTranslations("practice");
   const tn = await getTranslations("nav");
+  const tt = await getTranslations("team");
 
   return (
     <>
+      <PageJsonLd
+        locale={locale}
+        path="/practice-areas"
+        name={t("seo.title")}
+        description={t("seo.description")}
+        trail={[
+          { name: tn("home"), path: "" },
+          { name: tn("practice"), path: "/practice-areas" },
+        ]}
+      />
       <PageHero
         title={t("title")}
         subtitle={t("subtitle")}
@@ -128,6 +140,39 @@ export default async function PracticeAreasPage({
               </Reveal>
             );
           })}
+        </div>
+
+        <div className="container-narrow mt-16 border-t border-navy/10 pt-12">
+          <h2 className="text-center font-serif text-2xl text-navy">
+            {t("whoTitle")}
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-center text-sm text-navy/70">
+            {t("whoBody")}
+          </p>
+          <div className="mx-auto mt-8 grid max-w-2xl gap-4 sm:grid-cols-2">
+            {partners.map((p) => (
+              <Link
+                key={p.id}
+                href={`/team/${p.slug}`}
+                className="cursor-pointer rounded-lg border border-border bg-white p-5 text-center transition-colors hover:border-gold"
+              >
+                <span className="block font-serif text-lg text-navy">
+                  {locale === "zh" ? p.nameZh : p.name}
+                </span>
+                <span className="mt-1 block text-sm text-gold">
+                  {locale === "zh" ? p.roleZh : p.role}
+                </span>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-sm">
+            <Link
+              href="/team"
+              className="cursor-pointer text-navy/70 underline-offset-4 hover:text-gold hover:underline"
+            >
+              {tt("title")}
+            </Link>
+          </p>
         </div>
 
         <div className="container-narrow mt-14 text-center">

@@ -31,27 +31,53 @@ function meta(html, property) {
   return (html.match(re) || [])[1];
 }
 
-/** Extracts every absolute URL from the page's JSON-LD graph. */
-function jsonLdUrls(html) {
-  const match = html.match(
-    /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/
-  );
-  if (!match) return null;
-  const decoded = match[1]
+function decodeEntities(s) {
+  return s
     .replace(/&quot;/g, '"')
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&#x27;/g, "'");
-  let graph;
-  try {
-    graph = JSON.parse(decoded);
-  } catch {
-    return "invalid";
+}
+
+/** Parses every JSON-LD block on the page. Returns "invalid" if any fails. */
+function jsonLdBlocks(html) {
+  const blocks = [
+    ...html.matchAll(
+      /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g
+    ),
+  ];
+  if (blocks.length === 0) return null;
+  const parsed = [];
+  for (const b of blocks) {
+    try {
+      parsed.push(JSON.parse(decodeEntities(b[1])));
+    } catch {
+      return "invalid";
+    }
   }
-  const urls = JSON.stringify(graph).match(/https?:\/\/[^"]+/g) || [];
+  return parsed;
+}
+
+/** Flattens @graph containers into a single list of schema.org nodes. */
+function ldNodes(blocks) {
+  const nodes = [];
+  for (const block of blocks) {
+    if (Array.isArray(block["@graph"])) nodes.push(...block["@graph"]);
+    else nodes.push(block);
+  }
+  return nodes;
+}
+
+function ldUrls(blocks) {
+  const urls = JSON.stringify(blocks).match(/https?:\/\/[^"]+/g) || [];
   // schema.org is the vocabulary namespace, not a site URL.
   return [...new Set(urls)].filter((u) => !u.startsWith("https://schema.org"));
+}
+
+function nodeTypes(node) {
+  const t = node["@type"];
+  return Array.isArray(t) ? t : [t];
 }
 
 if (!fs.existsSync(APP_DIR)) {
@@ -61,6 +87,10 @@ if (!fs.existsSync(APP_DIR)) {
 
 const files = walk(APP_DIR).sort();
 const problems = [];
+// Title / description uniqueness is tracked per locale: EN and ZH pages are
+// separate documents, so the same slug in two languages is not a duplicate.
+const seenTitles = new Map();
+const seenDescriptions = new Map();
 
 console.log("=== Canonical / hreflang / Open Graph per prerendered page ===\n");
 
@@ -81,8 +111,20 @@ for (const file of files) {
   const ogTitle = meta(html, "og:title");
   const ogDescription = meta(html, "og:description");
   const ogLocale = meta(html, "og:locale");
+  const docTitle = decodeEntities(
+    (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || ""
+  );
+  const metaDescription = decodeEntities(
+    (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || ""
+  );
+  const htmlLang = (html.match(/<html[^>]*lang="([^"]+)"/) || [])[1];
 
   console.log(rel + (skipCanonical ? "  (canonical not expected)" : ""));
+  console.log(`  title          : ${docTitle || "(none)"} [${docTitle.length}]`);
+  console.log(
+    `  description    : ${metaDescription || "(none)"} [${metaDescription.length}]`
+  );
+  console.log(`  html lang      : ${htmlLang || "(none)"}`);
   console.log(`  canonical      : ${canonical || "(none)"}`);
   for (const a of alternates) console.log(`  hreflang ${a.lang.padEnd(9)}: ${a.href}`);
   console.log(`  og:url         : ${ogUrl || "(none)"}`);
@@ -101,6 +143,40 @@ for (const file of files) {
 
   if (!skipCanonical) {
     if (!canonical) problems.push(`${rel}: missing canonical`);
+
+    // Unique, present, and sensibly sized title + meta description.
+    const localeKey = rel.startsWith("zh") ? "zh" : "en";
+    if (!docTitle) problems.push(`${rel}: missing <title>`);
+    else {
+      const key = `${localeKey}::${docTitle}`;
+      if (seenTitles.has(key))
+        problems.push(`${rel}: duplicate title, also on ${seenTitles.get(key)}`);
+      else seenTitles.set(key, rel);
+      if (docTitle.length > 70)
+        problems.push(`${rel}: title is ${docTitle.length} chars (>70)`);
+    }
+    if (!metaDescription) problems.push(`${rel}: missing meta description`);
+    else {
+      const key = `${localeKey}::${metaDescription}`;
+      if (seenDescriptions.has(key))
+        problems.push(
+          `${rel}: duplicate description, also on ${seenDescriptions.get(key)}`
+        );
+      else seenDescriptions.set(key, rel);
+      // CJK conveys more per character, so the floor is lower for zh.
+      const min = localeKey === "zh" ? 40 : 70;
+      if (metaDescription.length < min)
+        problems.push(
+          `${rel}: description only ${metaDescription.length} chars (<${min})`
+        );
+      if (metaDescription.length > 200)
+        problems.push(`${rel}: description ${metaDescription.length} chars (>200)`);
+    }
+    const expectedLang = localeKey === "zh" ? "zh-MY" : "en-MY";
+    if (htmlLang !== expectedLang)
+      problems.push(`${rel}: html lang is "${htmlLang}", expected "${expectedLang}"`);
+    if (/<meta name="robots" content="[^"]*noindex/.test(html))
+      problems.push(`${rel}: page is noindex`);
     if (alternates.length !== 3)
       problems.push(`${rel}: expected 3 hreflang links, found ${alternates.length}`);
     for (const want of ["en-MY", "zh-MY", "x-default"]) {
@@ -121,21 +197,70 @@ for (const file of files) {
     if (!ogTitle) problems.push(`${rel}: missing og:title`);
     if (!ogDescription) problems.push(`${rel}: missing og:description`);
 
-    const ld = jsonLdUrls(html);
-    if (ld === null) {
+    const blocks = jsonLdBlocks(html);
+    if (blocks === null) {
       problems.push(`${rel}: no JSON-LD block`);
       console.log("  json-ld        : (none)");
-    } else if (ld === "invalid") {
+    } else if (blocks === "invalid") {
       problems.push(`${rel}: JSON-LD is not valid JSON`);
       console.log("  json-ld        : INVALID JSON");
     } else {
-      const offenders = ld.filter((u) => !u.startsWith(EXPECTED_ORIGIN));
+      const urls = ldUrls(blocks);
+      const offenders = urls.filter((u) => !u.startsWith(EXPECTED_ORIGIN));
+      const nodes = ldNodes(blocks);
+      const types = nodes.flatMap(nodeTypes);
       console.log(
-        `  json-ld        : ${ld.length} URLs, ${offenders.length} off-domain`
+        `  json-ld        : ${urls.length} URLs, ${offenders.length} off-domain, types: ${[
+          ...new Set(types),
+        ].join("/")}`
       );
       for (const u of offenders)
         problems.push(`${rel}: JSON-LD URL not on ${EXPECTED_ORIGIN}: ${u}`);
+
+      const isHome = rel === "en.html" || rel === "zh.html";
+
+      // Inner pages need a real hierarchy (Home → page). Home itself is not
+      // required to carry BreadcrumbList — a single Home crumb is not useful.
+      const crumb = nodes.find((n) => nodeTypes(n).includes("BreadcrumbList"));
+      if (!isHome && !crumb) {
+        problems.push(`${rel}: missing BreadcrumbList`);
+      } else if (crumb) {
+        const items = crumb.itemListElement ?? [];
+        if (!isHome && items.length < 2)
+          problems.push(`${rel}: BreadcrumbList has ${items.length} item(s)`);
+        items.forEach((it, i) => {
+          if (it.position !== i + 1)
+            problems.push(`${rel}: breadcrumb position ${it.position} out of order`);
+          if (!it.name) problems.push(`${rel}: breadcrumb item ${i + 1} has no name`);
+          if (!it.item || !String(it.item).startsWith(EXPECTED_ORIGIN))
+            problems.push(`${rel}: breadcrumb item ${i + 1} URL invalid: ${it.item}`);
+        });
+        // Last crumb must be the page itself.
+        const last = items[items.length - 1];
+        if (last && last.item !== canonical)
+          problems.push(
+            `${rel}: last breadcrumb ${last.item} != canonical ${canonical}`
+          );
+        console.log(
+          `  breadcrumb     : ${items.map((i) => i.name).join(" > ")}`
+        );
+      }
+      if (!types.includes("WebPage")) problems.push(`${rel}: missing WebPage node`);
+
+      // FAQPage belongs on the home page only, not duplicated site-wide.
+      const hasFaq = types.includes("FAQPage");
+      if (hasFaq && !isHome)
+        problems.push(`${rel}: FAQPage should only appear on the home page`);
+      if (!hasFaq && isHome) problems.push(`${rel}: home page missing FAQPage`);
     }
+
+    // Social + icon assets must be the dedicated square/1200x630 files.
+    const ogImage = meta(html, "og:image");
+    if (ogImage && !ogImage.includes("/og-image.png"))
+      problems.push(`${rel}: og:image is not the dedicated card: ${ogImage}`);
+    if (!ogImage) problems.push(`${rel}: missing og:image`);
+    if (/rel="icon"[^>]*href="\/favicon\.png"[^>]*sizes="926x314"/.test(html))
+      problems.push(`${rel}: favicon still non-square`);
   }
 
   console.log("");

@@ -1,8 +1,10 @@
 import { MapPin, MessageCircle, Phone, Mail, Clock } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/routing";
 import { EnquiryForm } from "@/components/contact/enquiry-form";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
+import { PageJsonLd } from "@/components/seo/json-ld";
 import { firm, partners, whatsappUrl } from "@/lib/firm";
 import { routeSeo } from "@/lib/seo";
 
@@ -14,8 +16,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    title: t("seo.title"),
+    description: t("seo.description"),
     ...routeSeo(locale, "/contact"),
   };
 }
@@ -28,9 +30,20 @@ export default async function ContactPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("contact");
+  const tn = await getTranslations("nav");
 
   return (
     <>
+      <PageJsonLd
+        locale={locale}
+        path="/contact"
+        name={t("seo.title")}
+        description={t("seo.description")}
+        trail={[
+          { name: tn("home"), path: "" },
+          { name: tn("contact"), path: "/contact" },
+        ]}
+      />
       <PageHero
         title={t("title")}
         subtitle={t("subtitle")}
@@ -117,6 +130,11 @@ export default async function ContactPage({
             </div>
           </aside>
         </div>
+        <div className="mt-10 text-center">
+          <Button asChild variant="gold" size="lg">
+            <Link href="/book-appointment">{tn("book")}</Link>
+          </Button>
+        </div>
       </section>
 
       <section className="border-t border-navy/10 bg-white section-pad !pt-12">
@@ -126,7 +144,7 @@ export default async function ContactPage({
           </h2>
           <div className="overflow-hidden rounded-lg border border-border">
             <iframe
-              title="Publika Solaris Dutamas map"
+              title={t("mapIframeTitle")}
               src="https://maps.google.com/maps?q=Publika%20Solaris%20Dutamas%20Mont%20Kiara&t=&z=15&ie=UTF8&iwloc=&output=embed"
               className="h-[360px] w-full border-0"
               loading="lazy"
@@ -141,7 +159,7 @@ export default async function ContactPage({
               rel="noopener noreferrer"
               className="cursor-pointer text-gold hover:underline"
             >
-              Open in Google Maps
+              {t("openMap")}
             </a>
           </p>
         </div>

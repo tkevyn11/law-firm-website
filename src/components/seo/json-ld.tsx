@@ -1,19 +1,68 @@
+import { getTranslations } from "next-intl/server";
 import { firm, partners } from "@/lib/firm";
+import { absoluteUrl, breadcrumbList, type Crumb } from "@/lib/seo";
 
-export function JsonLd() {
+const ORG_ID = `${firm.siteUrl}/#organization`;
+const SITE_ID = `${firm.siteUrl}/#website`;
+
+function JsonLdScript({ data }: { data: unknown }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/**
+ * Site-wide entity graph, rendered once per page from the locale layout.
+ *
+ * `@id` values are locale-independent so both language versions describe the
+ * same firm and the same two people rather than duplicate entities. Only the
+ * human-readable labels (`description`, `jobTitle`) are localized, with the
+ * Chinese names carried in `alternateName`.
+ */
+export async function JsonLd({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: "meta" });
+  const isZh = locale === "zh";
+
+  const attorney = (index: 0 | 1) => {
+    const p = partners[index];
+    return {
+      "@type": "Attorney",
+      "@id": `${firm.siteUrl}/#${p.id}`,
+      name: p.name,
+      alternateName: p.nameZh,
+      url: absoluteUrl(locale, `/team/${p.slug}`),
+      jobTitle: isZh ? p.roleZh : p.role,
+      worksFor: { "@id": ORG_ID },
+      telephone: p.phones[0],
+      email: p.email,
+      knowsLanguage: p.languageCodes,
+    };
+  };
+
   const data = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["LegalService", "LocalBusiness", "Attorney"],
-        "@id": `${firm.siteUrl}/#organization`,
+        "@type": "WebSite",
+        "@id": SITE_ID,
+        url: firm.siteUrl,
         name: firm.name,
         alternateName: firm.nameZh,
-        description:
-          "Boutique advocates & solicitors in Publika, Mont Kiara, Kuala Lumpur. Criminal defence, civil litigation, corporate, family and property law.",
+        publisher: { "@id": ORG_ID },
+        inLanguage: ["en-MY", "zh-MY"],
+      },
+      {
+        "@type": ["LegalService", "LocalBusiness", "Attorney"],
+        "@id": ORG_ID,
+        name: firm.name,
+        alternateName: firm.nameZh,
+        description: t("description"),
         url: firm.siteUrl,
-        logo: `${firm.siteUrl}/logo.png`,
-        image: `${firm.siteUrl}/logo.png`,
+        logo: `${firm.siteUrl}/icon-512.png`,
+        image: `${firm.siteUrl}/og-image.png`,
         telephone: firm.phone,
         email: firm.email,
         address: {
@@ -40,66 +89,88 @@ export function JsonLd() {
         },
         priceRange: "$$",
         knowsLanguage: ["en", "zh", "ms"],
-      },
-      {
-        "@type": "Attorney",
-        "@id": `${firm.siteUrl}/#kenny-tan`,
-        name: partners[0].name,
-        url: `${firm.siteUrl}/en/team/${partners[0].slug}`,
-        jobTitle: partners[0].role,
-        worksFor: { "@id": `${firm.siteUrl}/#organization` },
-        telephone: partners[0].phones[0],
-        email: partners[0].email,
-        knowsLanguage: partners[0].languages,
-      },
-      {
-        "@type": "Attorney",
-        "@id": `${firm.siteUrl}/#melvin-kong`,
-        name: partners[1].name,
-        url: `${firm.siteUrl}/en/team/${partners[1].slug}`,
-        jobTitle: partners[1].role,
-        worksFor: { "@id": `${firm.siteUrl}/#organization` },
-        telephone: partners[1].phones.join(", "),
-        email: partners[1].email,
-        knowsLanguage: partners[1].languages,
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${firm.siteUrl}/#faq`,
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "Where is TAN, KONG & ASSOCIATES located?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "C4-2-9, Block C4, Publika Solaris Dutamas, No. 1, Jalan Dutamas 1, Mont Kiara, 50480 Kuala Lumpur, Malaysia.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What practice areas does the firm cover?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Criminal defence, civil litigation, debt recovery, corporate and commercial law, personal injury and motor claims, family law, property conveyancing, and employment/industrial matters.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Does the firm speak Chinese?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. The firm offers services in English, Chinese (Mandarin) and Bahasa Malaysia, and regularly assists foreign clients.",
-            },
-          },
+        employee: [
+          { "@id": `${firm.siteUrl}/#${partners[0].id}` },
+          { "@id": `${firm.siteUrl}/#${partners[1].id}` },
         ],
       },
+      attorney(0),
+      attorney(1),
     ],
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
+  return <JsonLdScript data={data} />;
+}
+
+/**
+ * Per-page WebPage node plus its BreadcrumbList.
+ *
+ * Kept separate from the site-wide graph because both are page-specific: the
+ * `@id`s include the locale-prefixed URL so `/en/about` and `/zh/about` are
+ * distinct pages of the same site.
+ */
+export function PageJsonLd({
+  locale,
+  path,
+  name,
+  description,
+  trail,
+}: {
+  locale: string;
+  path: string;
+  name: string;
+  description?: string;
+  /** Real hierarchy only. Home omits this — a single Home crumb is not useful. */
+  trail?: Crumb[];
+}) {
+  const url = absoluteUrl(locale, path);
+  const hasCrumbs = Boolean(trail && trail.length >= 2);
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        url,
+        name,
+        ...(description ? { description } : {}),
+        isPartOf: { "@id": SITE_ID },
+        about: { "@id": ORG_ID },
+        inLanguage: locale === "zh" ? "zh-MY" : "en-MY",
+        ...(hasCrumbs ? { breadcrumb: { "@id": `${url}#breadcrumb` } } : {}),
+      },
+      ...(hasCrumbs && trail ? [breadcrumbList(locale, trail)] : []),
+    ],
+  };
+
+  return <JsonLdScript data={data} />;
+}
+
+/**
+ * FAQPage for the home page only.
+ *
+ * Google expects FAQ markup on the page whose content actually answers the
+ * questions; emitting the same FAQPage on every route would be duplicate
+ * structured data across 18 URLs.
+ */
+export async function FaqJsonLd({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: "faq" });
+  const keys = ["location", "practiceAreas", "languages"] as const;
+
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${absoluteUrl(locale)}#faq`,
+    inLanguage: locale === "zh" ? "zh-MY" : "en-MY",
+    mainEntity: keys.map((key) => ({
+      "@type": "Question",
+      name: t(`${key}.question`),
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: t(`${key}.answer`),
+      },
+    })),
+  };
+
+  return <JsonLdScript data={data} />;
 }

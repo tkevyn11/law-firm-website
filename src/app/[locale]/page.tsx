@@ -11,6 +11,7 @@ import { HeroImage } from "@/components/motion/hero-image";
 import { Reveal } from "@/components/motion/reveal";
 import { HoverLift } from "@/components/motion/hover-lift";
 import { CountUp } from "@/components/motion/count-up";
+import { FaqJsonLd, PageJsonLd } from "@/components/seo/json-ld";
 import { firm, partners, practiceAreaIds, whatsappUrl } from "@/lib/firm";
 
 const whyIcons = [Shield, MessageSquare, Scale, Globe2] as const;
@@ -27,7 +28,9 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("home");
+  const tm = await getTranslations("meta");
   const tp = await getTranslations("practice.areas");
+  const tt = await getTranslations("team");
   const wa = whatsappUrl(
     partners[0].whatsapp,
     "Hello, I would like to enquire about legal advice."
@@ -38,6 +41,15 @@ export default async function HomePage({
 
   return (
     <>
+      {/* FAQ markup lives only here: the home page is where these questions are
+          actually answered, so it is not duplicated across every route. */}
+      <PageJsonLd
+        locale={locale}
+        path=""
+        name={`${tm("siteName")} | ${tm("titleDefault")}`}
+        description={tm("description")}
+      />
+      <FaqJsonLd locale={locale} />
       <section className="relative min-h-[70vh] overflow-hidden border-b border-navy/10 bg-navy text-ivory sm:min-h-[75vh]">
         {hasHomeHero ? (
           <HeroImage
@@ -218,7 +230,7 @@ export default async function HomePage({
                         <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-gold/40">
                           <Image
                             src={p.photo}
-                            alt={p.name}
+                            alt={locale === "zh" ? p.nameZh : p.name}
                             fill
                             className="object-cover object-top"
                             sizes="80px"
@@ -245,7 +257,9 @@ export default async function HomePage({
                       <p className="font-serif text-3xl text-navy">
                         {p.highlight}
                       </p>
-                      <p className="text-sm text-navy/60">{p.highlightLabel}</p>
+                      <p className="text-sm text-navy/60">
+                        {locale === "zh" ? p.highlightLabelZh : p.highlightLabel}
+                      </p>
                       <p className="mt-4 text-sm text-navy/70">
                         {(locale === "zh" ? p.languagesZh : p.languages).join(
                           locale === "zh" ? "，" : " · "
@@ -257,9 +271,7 @@ export default async function HomePage({
                         className="mt-6"
                         size="sm"
                       >
-                        <Link href={`/team/${p.slug}`}>
-                          {locale === "zh" ? "了解更多" : "Learn more"}
-                        </Link>
+                        <Link href={`/team/${p.slug}`}>{tt("viewProfile")}</Link>
                       </Button>
                     </CardContent>
                   </Card>

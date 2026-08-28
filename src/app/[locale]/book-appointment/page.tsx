@@ -4,6 +4,7 @@ import { AppointmentForm } from "@/components/contact/appointment-form";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
+import { PageJsonLd } from "@/components/seo/json-ld";
 import { partners, whatsappUrl } from "@/lib/firm";
 import { routeSeo } from "@/lib/seo";
 
@@ -15,8 +16,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "appointment" });
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    title: t("seo.title"),
+    description: t("seo.description"),
     ...routeSeo(locale, "/book-appointment"),
   };
 }
@@ -29,9 +30,20 @@ export default async function BookAppointmentPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("appointment");
+  const tn = await getTranslations("nav");
 
   return (
     <>
+      <PageJsonLd
+        locale={locale}
+        path="/book-appointment"
+        name={t("seo.title")}
+        description={t("seo.description")}
+        trail={[
+          { name: tn("home"), path: "" },
+          { name: tn("book"), path: "/book-appointment" },
+        ]}
+      />
       <PageHero
         title={t("title")}
         subtitle={t("subtitle")}

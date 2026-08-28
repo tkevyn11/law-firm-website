@@ -10,7 +10,7 @@ Website: https://www.tkalegal.my
 - Address: C4-2-9, Block C4, Publika Solaris Dutamas, No. 1, Jalan Dutamas 1, Mont Kiara, 50480 Kuala Lumpur
 - Phone: +6012-355 0556
 - Email: general@tkalegal.com
-- Languages: English, Chinese (Mandarin), Bahasa Malaysia
+- Languages: English, Chinese (Mandarin and Cantonese), Bahasa Malaysia
 
 ## Partners
 - Kenny Tan — Partner, Criminal Defence (bail, police detention, foreign clients; 1000+ cases)
@@ -27,6 +27,8 @@ equivalent in the other language at the same path.
 - https://www.tkalegal.my/en/about — Firm story and partner bios
 - https://www.tkalegal.my/en/practice-areas — Practice areas
 - https://www.tkalegal.my/en/team — Partners listing
+- https://www.tkalegal.my/en/team/kenny-tan — Kenny Tan, criminal defence
+- https://www.tkalegal.my/en/team/melvin-kong — Kong Jiun Yuan (Melvin), civil & corporate
 - https://www.tkalegal.my/en/careers — Careers and open roles
 - https://www.tkalegal.my/en/book-appointment — Appointment booking
 - https://www.tkalegal.my/en/contact — Enquiry form, WhatsApp, map

@@ -43,7 +43,6 @@ export function Header() {
             height={314}
             className="h-[4.75rem] w-auto max-w-[min(70vw,340px)] object-contain object-left sm:h-[5.25rem] sm:max-w-[400px] lg:h-[5.75rem] lg:max-w-[440px]"
             priority
-            unoptimized
           />
         </Link>
 
@@ -70,7 +69,7 @@ export function Header() {
           className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-md border border-navy/15 text-navy lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={open ? t("closeMenu") : t("openMenu")}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -79,7 +78,7 @@ export function Header() {
       {/* Desktop nav row — breathing room, not squeezed beside CTAs */}
       <nav
         className="hidden border-t border-navy/10 lg:block"
-        aria-label="Main"
+        aria-label={t("main")}
       >
         <div className="container-narrow flex items-center justify-center gap-8 px-4 py-3 sm:gap-10 sm:px-6 lg:px-8 xl:gap-12">
           {links.map((link) => (
@@ -103,7 +102,7 @@ export function Header() {
       >
         <nav
           className="container-narrow flex flex-col gap-1 px-4 py-4"
-          aria-label="Mobile"
+          aria-label={t("mobile")}
         >
           {links.map((link) => (
             <Link

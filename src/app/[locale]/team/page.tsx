@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
 import { HoverLift } from "@/components/motion/hover-lift";
+import { PageJsonLd } from "@/components/seo/json-ld";
 import { team } from "@/lib/firm";
 import { routeSeo } from "@/lib/seo";
 
@@ -17,8 +18,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "team" });
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    title: t("seo.title"),
+    description: t("seo.description"),
     ...routeSeo(locale, "/team"),
   };
 }
@@ -31,9 +32,20 @@ export default async function TeamPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("team");
+  const tn = await getTranslations("nav");
 
   return (
     <>
+      <PageJsonLd
+        locale={locale}
+        path="/team"
+        name={t("seo.title")}
+        description={t("seo.description")}
+        trail={[
+          { name: tn("home"), path: "" },
+          { name: tn("team"), path: "/team" },
+        ]}
+      />
       <PageHero
         title={t("title")}
         subtitle={t("subtitle")}
@@ -53,7 +65,7 @@ export default async function TeamPage({
                       <div className="relative h-28 w-28 overflow-hidden rounded-full border-2 border-gold/40">
                         <Image
                           src={member.photo}
-                          alt={member.name}
+                          alt={locale === "zh" ? member.nameZh : member.name}
                           fill
                           className="object-cover object-top"
                           sizes="112px"
@@ -89,6 +101,15 @@ export default async function TeamPage({
               </HoverLift>
             </Reveal>
           ))}
+        </div>
+
+        <div className="container-narrow mt-12 flex flex-wrap justify-center gap-3">
+          <Button asChild variant="outline">
+            <Link href="/practice-areas">{t("explorePractice")}</Link>
+          </Button>
+          <Button asChild variant="gold">
+            <Link href="/book-appointment">{tn("book")}</Link>
+          </Button>
         </div>
       </section>
     </>

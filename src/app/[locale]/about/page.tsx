@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PageHero } from "@/components/layout/page-hero";
 import { Reveal } from "@/components/motion/reveal";
+import { PageJsonLd } from "@/components/seo/json-ld";
 import { partners, telHref, whatsappUrl } from "@/lib/firm";
 import { routeSeo } from "@/lib/seo";
 
@@ -17,8 +18,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    title: t("seo.title"),
+    description: t("seo.description"),
     ...routeSeo(locale, "/about"),
   };
 }
@@ -31,6 +32,7 @@ export default async function AboutPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("about");
+  const tn = await getTranslations("nav");
 
   const partnerCopy = [
     { partner: partners[0], bioKey: "kenny" as const },
@@ -39,6 +41,16 @@ export default async function AboutPage({
 
   return (
     <>
+      <PageJsonLd
+        locale={locale}
+        path="/about"
+        name={t("seo.title")}
+        description={t("seo.description")}
+        trail={[
+          { name: tn("home"), path: "" },
+          { name: tn("about"), path: "/about" },
+        ]}
+      />
       <PageHero
         title={t("title")}
         subtitle={t("subtitle")}
@@ -105,6 +117,14 @@ export default async function AboutPage({
             <h2 className="text-center text-3xl font-semibold">
               {t("partnersTitle")}
             </h2>
+            <p className="mt-3 text-center text-sm">
+              <Link
+                href="/team"
+                className="cursor-pointer text-navy/70 underline-offset-4 hover:text-gold hover:underline"
+              >
+                {tn("team")}
+              </Link>
+            </p>
             <div className="gold-diamond" />
           </Reveal>
           <div className="mt-12 space-y-10">
@@ -119,7 +139,7 @@ export default async function AboutPage({
                       <div className="relative h-40 w-40 overflow-hidden rounded-full border-2 border-gold/50 shadow-md">
                         <Image
                           src={partner.photo}
-                          alt={partner.name}
+                          alt={locale === "zh" ? partner.nameZh : partner.name}
                           fill
                           className="object-cover object-top"
                           sizes="160px"

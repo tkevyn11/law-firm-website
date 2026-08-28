@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import {
   getTeamMember,
+  partnerPracticeAreas,
   team,
   telHref,
   whatsappUrl,
 } from "@/lib/firm";
+import { PageJsonLd } from "@/components/seo/json-ld";
 import { routeSeo } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -26,10 +28,11 @@ export async function generateMetadata({
   const member = getTeamMember(slug);
   if (!member) return {};
   const t = await getTranslations({ locale, namespace: "team" });
-  const name = locale === "zh" ? member.nameZh : member.name;
   return {
-    title: name,
-    description: t(`members.${member.slug}.focus`),
+    // Absolute so the lawyer's speciality and city lead the SERP title instead
+    // of being pushed past the firm-name suffix the template would append.
+    title: { absolute: t(`members.${member.slug}.seo.title`) },
+    description: t(`members.${member.slug}.seo.description`),
     ...routeSeo(locale, `/team/${slug}`),
   };
 }
@@ -45,11 +48,25 @@ export default async function TeamMemberPage({
   if (!member) notFound();
 
   const t = await getTranslations("team");
+  const tn = await getTranslations("nav");
+  const tp = await getTranslations("practice.areas");
   const name = locale === "zh" ? member.nameZh : member.name;
   const role = locale === "zh" ? member.roleZh : member.role;
+  const relatedAreas = partnerPracticeAreas[member.slug] ?? [];
 
   return (
     <>
+      <PageJsonLd
+        locale={locale}
+        path={`/team/${slug}`}
+        name={t(`members.${member.slug}.seo.title`)}
+        description={t(`members.${member.slug}.seo.description`)}
+        trail={[
+          { name: tn("home"), path: "" },
+          { name: tn("team"), path: "/team" },
+          { name, path: `/team/${slug}` },
+        ]}
+      />
       <section className="border-b border-navy/10 bg-white section-pad !pb-12 !pt-16">
         <div className="container-narrow">
           <Link
@@ -70,7 +87,7 @@ export default async function TeamMemberPage({
                   <div className="relative h-44 w-44 overflow-hidden rounded-full border-2 border-gold/50 shadow-md">
                     <Image
                       src={member.photo}
-                      alt={member.name}
+                      alt={name}
                       fill
                       className="object-cover object-top"
                       sizes="176px"
@@ -115,6 +132,21 @@ export default async function TeamMemberPage({
                   {t(`members.${member.slug}.focus`)}
                 </p>
                 <h2 className="mt-4 font-serif text-lg text-navy">
+                  {t("relatedPractice")}
+                </h2>
+                <ul className="mt-2 flex flex-wrap gap-2">
+                  {relatedAreas.map((id) => (
+                    <li key={id}>
+                      <Link
+                        href={`/practice-areas#${id}`}
+                        className="cursor-pointer rounded-md border border-navy/15 bg-ivory px-3 py-1.5 text-sm text-navy/80 hover:border-gold hover:text-gold"
+                      >
+                        {tp(`${id}.title`)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <h2 className="mt-4 font-serif text-lg text-navy">
                   {t("languages")}
                 </h2>
                 <p className="mt-2 text-sm text-navy/70">
@@ -145,6 +177,15 @@ export default async function TeamMemberPage({
                       {member.email}
                     </a>
                   </p>
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-3 border-t border-navy/10 pt-6">
+                  <Button asChild variant="gold" size="sm">
+                    <Link href="/book-appointment">{tn("book")}</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href="/practice-areas">{t("explorePractice")}</Link>
+                  </Button>
                 </div>
               </div>
             </article>
